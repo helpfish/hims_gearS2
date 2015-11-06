@@ -1,0 +1,14 @@
+#content {width:360px;height:360px;overflow:hidden;}
+#commentList {display:none;}
+#commentList.show {display:block;}
+#commentList > .row {width:360px;height:120px;padding:0 20px;text-align:center;overflow:hidden;display:table;}
+#commentList > .row > span {line-height:130%;font-size:20pt;display:inline-block;vertical-align: middle;display:table-cell;}
+#commentList > .row.current {padding:0 20px;}
+#commentList > .row.newComment {text-align:center;}
+
+
+#commentWrite {display:none;}
+#commentWrite.show {display:block;}
+#commentWrite .inner {font-size:24pt;}
+#commentWrite textarea {width:100%;height:120px;margin-top:20px;font-size:16pt;color:#333;}
+#commentWrite > .content {padding:40px;padding-top:50px;}

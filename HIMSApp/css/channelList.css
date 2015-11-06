@@ -1,0 +1,24 @@
+body {overflow:hidden;}
+#content {width:360px;height:360px;overflow:hidden;}
+#channelList {display:none;}
+#channelList.show {display:block;}
+#channelList > .row.existingChannel {line-height:auto;padding:25px 0;}
+#channelList > .row.existingChannel > .title {height:70px;line-height:70px;font-size:20pt;}
+#channelList > .row.existingChannel > .desc {display:none;}
+#channelList > .row.existingChannel.current > .title {height:40px;line-height:40px;font-size:25pt;}
+#channelList > .row.existingChannel.current > .desc {height:30px;line-height:30px;font-size:16pt;display:block;}
+#channelList > .row.newChannel {font-size:16pt;}
+#channelList > .row.newChannel.current {font-size:20pt;}
+
+#userList {display:none}
+#userList.show {display:block;}
+#userList > .row {line-height:120px;padding:0;}
+#userList > .row.selected > div {margin:0 15px;height:120px;background:url('./images/common_check.png') right center no-repeat;background-size:70px 70px;}
+#userList > .title {height:80px;line-height:80px;border-radius:40px;margin:20px 100px;padding:0;color:#FFF;background:#02385C;}
+
+#titleWrite {display:none;}
+#titleWrite.show {display:block;}
+#titleWrite > .content {padding:0;}
+#titleWrite .title {height:120px;line-height:120px;font-size:24pt;color:#1AB4FF;}
+#titleWrite .inputWrap {height:120px;}
+#titleWrite .inputWrap > input {height:60px;margin-top:30px;padding:0 20px;border-radius:30px;border:none;color:#FFF;background:#333;}

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML />
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>Room Information</title>
+
+		<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="./lib/yhDialog/yhDialog.css" />
+		<link rel="stylesheet" type="text/css" href="./css/myRoomClean.css"/>
+		
+		<script src="./lib/jquery/jquery-2.1.4.min.js"></script>
+		<script src="./lib/yhDialog/yhDialog.js"></script>
+		<script src="./js/common.js"></script>
+		<script src="./js/myRoomClean.js"></script>
+	</head>
+	<body>
+		<div id="content" class='oc'>
+			<div id="roomInfo">
+				<div class="title">
+					<div class="statusDot"><div class="inner"></div></div>
+					<div class="roomNum"></div>
+				</div>
+				<div class="statusText"></div>
+				<div class="checkTime checkIn">
+					<div class="title">Check in</div>
+					<div class="desc">-----, --:--</div>
+				</div>
+				<div class="checkTime checkOut">
+					<div class="title">Check out</div>
+					<div class="desc">-----, --:--</div>
+				</div>
+				<div class="requirement" english='' spanish=''></div>
+				<div class="btnWrap translate" onclick="changeTranslation();">
+					<div class="icon"></div>
+					<div class="text">Spanish</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

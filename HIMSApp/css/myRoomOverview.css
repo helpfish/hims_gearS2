@@ -1,0 +1,8 @@
+#content {width:360px;height:360px;padding-top:45px;position:relative;background:#000;}
+#content > .title {font-size:40px;color:#FFF;}
+#content > .roomList {margin-top:15px;padding:0 0 0 25px;overflow:hidden;font-size:0;text-align:left;}
+#content > .roomList > .e {width:54px;height:54px;border-radius:50%;margin:0 10px 5px 0;display:inline-block;}
+#content > .roomList > .e.vc {background:#00C9FF;}
+#content > .roomList > .e.vd {background:#F8E71C;}
+#content > .roomList > .e.oc {background:#00C9FF url('./images/stairOverview_occupied.png') center center no-repeat;background-size:32px 32px;}
+#content > .roomList > .e.od {background:#F8E71C url('./images/stairOverview_occupied.png') center center no-repeat;background-size:32px 32px;}

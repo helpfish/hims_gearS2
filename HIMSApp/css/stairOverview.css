@@ -1,0 +1,12 @@
+#content {width:360px;height:360px;padding-top:36px;position:relative;background:#000;}
+#content > .title {font-size:40px;color:#FFF;}
+#content > .roomList {height:153px;margin-top:15px;padding:0 35px;overflow:hidden;font-size:0;text-align:left;}
+#content > .roomList > .e {width:21px;height:21px;border-radius:50%;margin:0 4px 23px;display:inline-block;}
+#content > .roomList > .e.vc {background:#00C9FF;}
+#content > .roomList > .e.vd {background:#F8E71C;}
+#content > .roomList > .e.oc {background:#00C9FF url('./images/stairOverview_occupied.png') center center no-repeat;background-size:13px 13px;}
+#content > .roomList > .e.od {background:#F8E71C url('./images/stairOverview_occupied.png') center center no-repeat;background-size:13px 13px;}
+#content > .statusWrap {margin-top:15px;font-size:20pt;}
+#content > .statusWrap > .notCleaned {color:#F82;}
+#content > .statusWrap > .cleaned {margin-top:5px;color:#77F;}
+#content > .statusWrap .num {color:#FFF;}

@@ -1,0 +1,5 @@
+.yhList {text-align:center;-webkit-transition:-webkit-transform 300ms;}
+.yhList > .title {height:120px;line-height:40px;padding:40px;font-size:24pt;color:#1AB4FF;}
+.yhList > .row {height:120px;line-height:40px;padding:40px;font-size:24pt;color:#555;}
+.yhList > .row.current {font-size:36pt;color:#FFF;background:url('./images/yhList_bg.png') center center no-repeat;background-size:360px 120px;}
+.yhList > .tail {height:120px;}

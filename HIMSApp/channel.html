@@ -1,0 +1,52 @@
+<!DOCTYPE HTML />
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<title>Room Information</title>
+
+		<link rel="stylesheet" type="text/css" href="./css/common.css" />
+		<link rel="stylesheet" type="text/css" href="./lib/yhList/yhList.css" />
+		<link rel="stylesheet" type="text/css" href="./lib/yhDialog/yhDialog.css" />
+		<link rel="stylesheet" type="text/css" href="./css/channel.css" />
+		
+		<script src="./lib/jquery/jquery-2.1.4.min.js"></script>
+		<script src="./js/common.js"></script>
+		<script src="./lib/yhList/yhList.js"></script>
+		<script src="./lib/yhDialog/yhDialog.js"></script>
+		<script src="./js/channel.js"></script>
+	</head>
+	<body>
+		<div id="content">
+			<div id="channel" class='show'>
+				<div class="replyIcon"></div>
+				<div class="talkerName">Calvin Harris</div>
+				<div class="title">team1</div>
+				<div class="time">00:00.0</div>
+				<div class="recBtn" onclick="recordToggle();"></div>
+				<div class="menuBtn" onclick="menuOpen();"></div>
+			</div>
+			<div id="channelPopup" class=''>
+				<div class="nameWrap">Angella Sue</div>
+				<div class="btnWrap">
+					<div class="btn cancel"></div>
+					<div class="btn play"></div>
+					<div class="btn reply" onclick="popupClose();"></div>
+				</div>
+				<div class="dateWrap">2015-10-18 08:40AM</div>
+			</div>
+			<div id="channelMenu">
+				<div class="btn list">
+					<div class="icon"></div>
+					<div class="text">list</div>
+				</div>
+				<div class="btn history" onclick="historyOpen();">
+					<div class="icon"></div>
+					<div class="text">history</div>
+				</div>
+				<div class="btnClose" onclick='menuClose();'></div>
+			</div>
+			<div id="channelHistory"></div>
+		</div>
+	</body>
+</html>

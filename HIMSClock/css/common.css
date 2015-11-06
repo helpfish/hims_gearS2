@@ -1,0 +1,19 @@
+body {margin:0;padding:0;text-align:center;font-size:20pt;font-family:'맑은 고딕','Dotum','Arial';color:#FFF;background:#000;}
+body * {font-size:inherit;color:inherit;box-sizing:border-box;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);webkit-user-select:none;}
+img,a,div,form {border:0;padding:0;}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+input, button, textarea {font-family:'맑은 고딕','Dotum','Arial'}
+button {height:45px;border:none;border-radius:3px;padding:0 15px;color:#FFF;cursor:pointer;background:#EC4;}
+textarea{line-height:150%;padding:10px;border:1px solid #DDD;resize:none;}
+/**::-webkit-scrollbar {display:none;}*/
+
+#loadingPopup {width:360px;height:360px;position:absolute;left:0;top:0;z-index:9999;overflow:hidden;background:#000;display:none;}
+#loadingPopup.show {display:block;}
+#loadingPopup > .icon {width:120px;height:120px;margin:90px auto 0;background:url('./images/common_loading.png') center center no-repeat;background-size:100px 100px;-webkit-animation:rotateLoading 1200ms infinite;}
+#loadingPopup > .text {height:30px;line-height:30px;margin-top:20px;}
+#loadingPopup > .text:after {color:#AAA;content:'Loading...';}
+@-webkit-keyframes rotateLoading {
+	from {-webkit-transform: rotate(0deg);}
+	to { -webkit-transform: rotate(360deg);}
+}

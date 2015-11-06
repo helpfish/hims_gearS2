@@ -1,0 +1,55 @@
+<!DOCTYPE HTML />
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>Main</title>
+
+		<link rel="stylesheet" type="text/css" href="./css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/index.css"/>
+		
+		<script src="./lib/jquery/jquery-2.1.4.min.js"></script>
+		<script src="./js/common.js"></script>
+		<script src="./js/index.js"></script>
+	</head>
+	<body>
+		<div id="managerPage" class='page'>
+			<div class="btn room"></div>
+			<div class="btn radio"></div>
+			<div class="btn search"></div>
+			<div class="btn2 logout"></div>
+			<div class="batteryLevel">-%</div>
+
+			<div class="needle needleHour"></div>
+			<div class="needle needleMin"></div>
+			<div class="needle needleSec"></div>
+
+			<!--버튼이 시계침으로 덮여도 클릭할 수 있도록 투명한 element를 띄움-->
+			<div class="btn room2" onclick="callHIMSApp('HIMS_getStairList');"></div>
+			<div class="btn radio2" onclick="callHIMSApp('HIMS_getChannelList');"></div>
+			<div class="btn search2" onclick="callHIMSApp('HIMS_searchRoom');"></div>
+			<div class="btn2 logout2" onclick="doLogout();"></div>
+		</div>
+		<div id="cleanerPage" class="page">
+			<div class="btn room" onclick="callHIMSApp('HIMS_getMyRoom');">
+				<div class="icon"></div>
+				<div class="text">Room</div>
+			</div>
+			<div class="btn radio" onclick="callHIMSApp('HIMS_getChannelList');">
+				<div class="icon"></div>
+				<div class="text">Radio</div>
+			</div>
+			<div class="btn logout" onclick="doLogout();";>
+				<div class="icon"></div>
+				<div class="text">Logout</div>
+			</div>
+
+			<div class="batteryLevel">-%</div>
+			<div class="clockWrap">12:00pm</div>
+		</div>
+		<div id="loggedOutPage" class="page">
+			<div class="clockWrap"><span class="hour">10</span><span class="colon">:</span><span class="minute">10</span></div>
+			<div class="btnWrap" onclick="doLogin();">Login</div>
+		</div>
+	</body>
+</html>

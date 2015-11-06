@@ -1,0 +1,17 @@
+.yhDialog {width:360px;height:360px;position:absolute;left:0;top:0;z-index:9999;}
+.yhDialog > .content {width:360px;height:360px;padding:65px;font-size:18pt;overflow-y:scroll;}
+.yhDialog > .content::-webkit-scrollbar {display:none;}
+.yhDialog > .content.verticalAlignCenter {display:table-cell;vertical-align:middle;}
+
+.yhDialog.confirm {}
+.yhDialog.confirm > .btn {width:65px;height:360px;line-height:360px;position:absolute;top:0;z-index:2;}
+.yhDialog.confirm > .btnA {left:0;background:url('./images/yhDialog_btnA.png') center center no-repeat;}
+.yhDialog.confirm > .btnA.text {padding-left:5px;background-image:url('./images/yhDialog_btnA_bg.png');}
+.yhDialog.confirm > .btnB {right:0;background:url('./images/yhDialog_btnB.png') center center no-repeat;}
+.yhDialog.confirm > .btnB.text {padding-right:5px;background-image:url('./images/yhDialog_btnB_bg.png');}
+
+.yhDialog.alert {}
+.yhDialog.alert > .content {padding-bottom:100px;}
+.yhDialog.alert > .btn {width:360px;height:100px;padding-top:25px;position:absolute;bottom:0;z-index:2;}
+.yhDialog.alert > .btnA {left:0;background:url('./images/yhDialog_btn2.png') center center no-repeat;}
+.yhDialog.alert > .btnB {display:none;}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/HIMSApp" version="1.0.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"></access>
+    <tizen:app-control>
+        <tizen:src name="loginName.html"/>
+        <tizen:operation name="HIMS_loginName"/>
+    </tizen:app-control>
+    <tizen:app-control>
+        <tizen:src name="stairList.html"/>
+        <tizen:operation name="HIMS_getStairList"/>
+    </tizen:app-control>
+    <tizen:app-control>
+        <tizen:src name="myRoomOverview.html"/>
+        <tizen:operation name="HIMS_getMyRoom"/>
+    </tizen:app-control>
+    <tizen:app-control>
+        <tizen:src name="search.html"/>
+        <tizen:operation name="HIMS_searchRoom"/>
+    </tizen:app-control>
+    <tizen:app-control>
+        <tizen:src name="channelList.html"/>
+        <tizen:operation name="HIMS_getChannelList"/>
+    </tizen:app-control>
+    <tizen:application id="2oy6U4Dm61.HIMSApp" package="2oy6U4Dm61" required_version="1.0"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>HIMSApp</name>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/audiorecorder"/>
+    <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:profile name="wearable"/>
+    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>

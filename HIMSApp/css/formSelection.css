@@ -1,0 +1,9 @@
+#content {width:360px;height:360px;position:relative;overflow:hidden;}
+#content > .nameWrap {margin-top:55px;font-size:20pt;color:#00C9FF;}
+#content > .btnWrap {margin-top:15px;}
+#content > .btnWrap > .short {width:50%;height:128px;padding-right:13px;float:left;}
+#content > .btnWrap > .short > .imgWrap {width:128px;height:128px;float:right;}
+#content > .btnWrap > .short > .textWrap {width:128px;margin-top:10pt;font-size:18pt;color:#CCC;float:right;}
+#content > .btnWrap > .long {width:50%;height:128px;padding-left:13px;float:left;}
+#content > .btnWrap > .long > .imgWrap {width:128px;height:128px;float:left;}
+#content > .btnWrap > .long > .textWrap {width:128px;margin-top:10pt;font-size:18pt;color:#CCC;float:left;}

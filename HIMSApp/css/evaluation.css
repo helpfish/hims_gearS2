@@ -1,0 +1,15 @@
+#content {width:360px;height:360px;position:relative;overflow:hidden;}
+
+#formWrap {display:none;}
+#formWrap.show {display:block;}
+#formWrap .content {font-size:24pt;}
+#formWrap .btnWrap {margin-top:25px;}
+#formWrap .btnWrap > .icon {width:95px;height:95px;margin:0 auto;background:top center no-repeat;background-size:95px 190px;}
+#formWrap .btnWrap > .text {font-size:17pt;color:#15CAFF;}
+#formWrap .btnWrap.comment > .icon {background-image:url('./images/common_btn_comment.png');}
+
+#commentWrite {display:none;}
+#commentWrite.show {display:block;}
+#commentWrite .inner {font-size:24pt;}
+#commentWrite textarea {width:100%;height:120px;margin-top:20px;font-size:16pt;color:#333;}
+#commentWrite > .content {padding:40px;padding-top:50px;}

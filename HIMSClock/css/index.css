@@ -1,0 +1,44 @@
+.page {width:360px;height:360px;display:none;}
+.page.show {display:block;}
+
+#managerPage {background:#000 url('./images/index_bg.png') center center no-repeat;background-size:360px 360px;}
+#managerPage > .btn {width:112px;height:112px;position:absolute;left:50%;top:50%;background:center center no-repeat;background-size:112px 112px;}
+#managerPage > .btn.room {margin-left:-56px;margin-top:30px;background-image:url('./images/index_btn_room.png');}
+#managerPage > .btn.radio {margin-left:-142px;margin-top:-56px;background-image:url('./images/index_btn_radio.png');}
+#managerPage > .btn.search {margin-left:30px;margin-top:-56px;background-image:url('./images/index_btn_search.png');}
+#managerPage > .btn2 {width:94px;height:37px;position:absolute;left:50%;top:50%;background:center center no-repeat;background-size:94px 37px;}
+#managerPage > .btn2.logout {margin-left:-47px;margin-top:-96px;background-image:url('./images/index_btn2_logout.png');}
+#managerPage > .batteryLevel {width:90px;height:30px;line-height:30px;padding-left:15px;background:url('./images/index_battery.png') 15px center no-repeat;font-family:arial;font-size:12pt;color:#999;background-size:13px 20px;position:absolute;left:50%;top:50%;margin-left:-45px;margin-top:-130px;}
+#managerPage > .btn.room2 {margin-left:-56px;margin-top:30px;z-index:99;opacity:0;}
+#managerPage > .btn.radio2 {margin-left:-142px;margin-top:-56px;z-index:99;}
+#managerPage > .btn.search2 {margin-left:30px;margin-top:-56px;z-index:99;}
+#managerPage > .btn2.logout2 {margin-left:-47px;margin-top:-96px;z-index:99;}
+#managerPage > .needle {height:360px;position:absolute;left:50%;top:50%;margin-top:-180px;z-index:2;}
+#managerPage > .needle.needleHour {width:18px;margin-left:-9px;background:url('./images/index_hourNeedle.png') center 50px no-repeat;}
+#managerPage > .needle.needleMin {width:20px;margin-left:-10px;background:url('./images/index_minNeedle.png') center 20px no-repeat;}
+#managerPage > .needle.needleSec {width:8px;margin-left:-4px;background:url('./images/index_secNeedle.png') center 5px no-repeat;}
+
+#cleanerPage {}
+#cleanerPage > .btn {width:130px;height:160px;border-radius:50%;position:absolute;}
+#cleanerPage > .btn > .icon {width:130px;height:130px;background:center center no-repeat;background-size:128px 128px;}
+#cleanerPage > .btn > .text {height:30px;line-height:30px;font-size:15pt;}
+#cleanerPage > .btn.room {top:50%;margin-top:-100px;left:20px;}
+#cleanerPage > .btn.room > .icon {background-image:url('./images/index_cleanerPage_room.png');}
+#cleanerPage > .btn.radio {top:50%;margin-top:-100px;right:20px;}
+#cleanerPage > .btn.radio > .icon {background-image:url('./images/index_cleanerPage_radio.png');}
+#cleanerPage > .btn.logout {bottom:10px;left:50%;margin-left:-65px;}
+#cleanerPage > .btn.logout > .icon {background-image:url('./images/index_cleanerPage_logout.png');}
+#cleanerPage > .batteryLevel {width:90px;height:30px;line-height:30px;padding-left:20px;background:url('./images/index_battery2.png') 15px center no-repeat;font-family:arial;font-size:15pt;color:#999;background-size:13px 20px;position:absolute;top:15px;left:50%;margin-left:-45px;}
+#cleanerPage > .clockWrap {width:150px;height:30px;line-height:30px;font-family:arial;font-size:24pt;color:#FFF;position:absolute;left:50%;top:50%;margin-left:-75px;top:50px;}
+
+#loggedOutPage {}
+#loggedOutPage > .clockWrap {width:360px;height:150px;line-height:150px;font-size:80pt;position:absolute;left:0;top:50%;margin-top:-100px;}
+#loggedOutPage > .clockWrap > .colon {padding:0 10px;-webkit-animation:blink2 1000ms linear infinite;}
+#loggedOutPage > .btnWrap {width:360px;height:100px;padding-top:20px;font-size:24pt;background:url('./images/index_loggedOutPage_btn.png') center center no-repeat;background-size:360px 100px;position:absolute;left:0;bottom:0;}
+#loggedOutPage > .btnWrap:hover {opacity:0.8;}
+@-webkit-keyframes blink2 {
+	0% {opacity:1;}
+	49.9% {opacity:1;}
+	50% {opacity:0;}
+	100%{opacity:0;}
+}
