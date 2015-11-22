@@ -26,6 +26,21 @@
 				<div class="title">Channel name</div>
 				<div class="inputWrap"><input type='text' name='channelName' /></div>
 			</div>
+
+			<div class="menuBtn" onclick="menuOpen();"></div>
+
+			<div id="channelMenu">
+				<div class="btn add" onclick="getUserList();">
+					<div class="icon"></div>
+					<div class="text">new</div>
+				</div>
+				<div class="btn history" onclick="historyOpen();">
+					<div class="icon"></div>
+					<div class="text">history</div>
+				</div>
+				<div class="btnClose" onclick='menuClose();'></div>
+			</div>
+			<div id="channelHistory"></div>
 		</div>
 	</body>
 </html>

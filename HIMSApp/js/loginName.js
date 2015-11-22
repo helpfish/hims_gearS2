@@ -60,8 +60,8 @@ function getNameList() {
 			hideLoadingPopup();
 		},
 		error:function(xhr, status, error) {
-			console.log(status);
-			console.log(xhr.responseText);
+			alert("Unable to connect to server.");
+			tizen.application.getCurrentApplication().exit();
 		}
 	});
 }

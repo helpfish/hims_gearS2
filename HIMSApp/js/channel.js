@@ -2,7 +2,7 @@
 * 전역변수
 **/
 //jQuery Element Caching
-var $channel, $channelPopup, $channelMenu, $channelHistory;
+var $channel, $channelPopup, $channelMenu, $channelHistory, $channelUser;
 
 //녹음을 위한 변수
 var audioCtrl;
@@ -24,19 +24,38 @@ $(function () {
 	$channelPopup = $('#channelPopup');
 	$channelMenu = $('#channelMenu');
 	$channelHistory = $('#channelHistory');
+	$channelUser = $('#channelUser');
 	
+	
+	//해당 채널 정보 받아옴
+	channelInit();
+
 	//recorder 초기화
 	recorderInit();
+	$channel.find('.recBtn').on('touchstart',function () {
+		recordStart();
+	}).on('touchend',function () {
+		recordStop();
+	});
 
 	document.addEventListener('tizenhwkey', function(e) {
         if(e.keyName == "back") {
-			if ($channelMenu.hasClass('show')) menuClose();
-			else if ($channelPopup.hasClass('show')) popupClose(); 
-			else if ($channelHistory.hasClass('show')) {
+			if ($channelMenu.hasClass('show')) {
+				menuClose();
+			} else if ($channelPopup.hasClass('show')) {
+				popupClose(); 
+			} else if ($channelHistory.hasClass('show')) {
 				historyClose();
 				soundSource.noteOff(0);
+			} else if ($channelUser.hasClass('show')) {
+				userListClose();
 			} else {
-				audioCtrl.release();
+				try {
+					audioCtrl.release();
+					isRecordAvailable = false;
+				} catch (e) {
+
+				}
 				history.back();
 			}
     	}
@@ -44,16 +63,59 @@ $(function () {
 
 	document.addEventListener("rotarydetent", function(event){
 		if (event.detail.direction === "CW") {
-			
+			if ($channelHistory.hasClass('show')) $channelHistory.moveNext();
 		} else {
-			
+			if ($channelHistory.hasClass('show')) $channelHistory.movePrev();
 		}
 	}, false);
+
+	document.addEventListener('visibilitychange', function(e) {
+		if (document.hidden) {
+			try {
+				//$channel.find('.time').html('hidden!');
+				audioCtrl.release();
+				isRecordAvailable = false;
+			} catch (ignore) {
+
+			}
+		} else {
+			recorderInit();
+		}
+    });
 });
 
 /**
 * 함수선언
 **/
+function channelInit() {
+	$.ajax({
+		type:'GET',
+		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id'],
+		dataType:'json',
+		headers:{
+			"Content-Type":"application/json",
+			"Authorization":"Basic "+HIMS['loginInfo']['token']
+		},
+		beforeSend:function () {
+			showLoadingPopup();
+		},
+		success:function(data) {
+			if (data['error'] != null) {
+				alert(data['error']);
+				hideLoadingPopup();
+				return;
+			}
+
+			$channel.find('.title').html(escapeHtml(data['result'][0]['channel_name']));
+			hideLoadingPopup();
+		},
+		error:function(xhr, status, error) {
+			console.log(status);
+			alert(xhr.responseText);
+			
+		}
+	});
+}
 function popupOpen() {
 	$channel.removeClass('show');
 	$channelPopup.addClass('show');
@@ -87,7 +149,7 @@ function menuClose () {
 function historyOpen() {
 	$.ajax({
 		type:'GET',
-		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=oldest&num=10&format=mp3',
+		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10&format=mp3',
 		dataType:'json',
 		headers:{
 			"Content-Type":"application/json",
@@ -126,7 +188,11 @@ function historyOpen() {
 					var $this = $channelHistory.find('.row:eq('+idx+')');
 
 					if ($this.hasClass('play')) {
-						soundSource.noteOff(0);
+						try {
+							soundSource.noteOff(0);
+						} catch (ignore) {
+
+						}
 						$this.removeClass('play');
 						return;
 					} 
@@ -150,12 +216,18 @@ function historyOpen() {
 					volumeNode.connect(audioCtx.destination);
 
 					// 기본 셋팅
-					volumeNode.gain.value = 10;
-					soundSource.loop = true;
+					volumeNode.gain.value = 8;
+					//soundSource.loop = true;
+					soundSource.onended = function () {
+						//soundSource.noteOff(0);
+						$this.removeClass('play');
+						//alert('onended!');
+					};
 
 					// Finally
 					//alert(audioCtx.currentTime);
 					soundSource.noteOn(0);
+					//soundSource.start();
 				}
 			});
 
@@ -176,6 +248,57 @@ function historyOpen() {
 function historyClose() {
 	$channel.addClass('show');
 	$channelHistory.removeClass('show');
+}
+
+function userListOpen() {
+	$.ajax({
+		type:'GET',
+		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id'],
+		dataType:'json',
+		headers:{
+			"Content-Type":"application/json",
+			"Authorization":"Basic "+HIMS['loginInfo']['token']
+		},
+		beforeSend:function () {
+			showLoadingPopup();
+		},
+		success:function(data) {
+			//console.log(data);
+			var memberList = data['result'][0]['member_list'];
+			var html = '';
+			for (var i=0;i<memberList.length;i++) {
+				html += "<div class='row'>"+escapeHtml(memberList[i])+"</div>";
+			}
+
+			$channelUser.html(html);
+			$channelUser.yhList();
+
+			//$loginNameList.html(html);
+
+			//yhList구동
+			/*$loginNameList.yhList({
+				onclick:function (idx) {
+					var mbId = $loginNameList.children('.row:eq('+idx+')').attr('mbId');
+					location.href='./loginPw.html?mbId='+encodeURIComponent(mbId);
+				}
+			});*/
+
+			hideLoadingPopup();
+		},
+		error:function(xhr, status, error) {
+			console.log(status);
+			console.log(xhr.responseText);
+		}
+	});
+
+	$channel.removeClass('show');
+	$channelMenu.removeClass('show');
+	$channelUser.addClass('show');
+}
+
+function userListClose() {
+	$channel.addClass('show');
+	$channelUser.removeClass('show');
 }
 /*
 Recoder 관련 함수들

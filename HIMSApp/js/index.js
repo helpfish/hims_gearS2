@@ -16,7 +16,7 @@ $(function () {
 		verticalAlign:'middle',
 		onclickA:function () {
 			tizen.application.getCurrentApplication().exit();
-			//location.href='channel.html';
+			//location.href='test.html';
 		}
 	});
 
@@ -29,9 +29,9 @@ $(function () {
 
 	document.addEventListener("rotarydetent", function(event){
 		if (event.detail.direction === "CW") {
-			//$stairList.moveNext();
+			
 		} else {
-			//$stairList.movePrev();
+			
 		}
 	}, false);
 });

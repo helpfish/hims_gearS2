@@ -3,13 +3,16 @@
 #roomList > .row {padding:20px 0px 20px 90px;}
 #roomList > .row > .statusDot {width:28px;height:80px;padding:26px 0;float:left;}
 #roomList > .row > .statusDot > .inner {width:100%;height:100%;border-radius:50%;background:center center no-repeat;background-size:18px 18px;}
-#roomList > .row > .desc {height:80px;padding-left:13px;overflow:hidden;}
+#roomList > .row > .inspection {width:30px;height:80px;margin-left:10px;float:left;background:url('./images/roomList_ins0.png') center center no-repeat;background-size:20px 30px;}
+#roomList > .row > .inspection.ins1 {background-image:url('./images/roomList_ins1.png');}
+#roomList > .row > .desc {height:80px;padding-left:10px;overflow:hidden;}
 #roomList > .row > .desc > .roomNum {height:80px;line-height:80px;font-size:20pt;color:#BBB;text-align:left;}
 #roomList > .row > .desc > .statusText {display:none;}
 
-#roomList > .row.current {padding-left:60px;}
+#roomList > .row.current {padding-left:50px;}
 #roomList > .row.current > .statusDot {width:38px;padding:21px 0;}
 #roomList > .row.current > .statusDot > .inner {background-size:24px 24px;}
+#roomList > .row.current > .inspection {width:40px;background-size:30px 42px;}
 #roomList > .row.current > .desc {padding-left:15px;}
 #roomList > .row.current > .desc > .roomNum {height:45px;line-height:45px;font-size:26pt;color:#FFF;}
 #roomList > .row.current > .desc > .statusText {height:35px;line-height:35px;font-size:20pt;color:#F8E71A;text-align:left;display:block;}

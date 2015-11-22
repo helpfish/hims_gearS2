@@ -2,9 +2,13 @@
 * 전역변수
 **/
 var $managerPage, $cleanerPage, $loggedOutPage;
-var loginInfo = {}, watchFaceType = '';
+var loginInfo = {token:null,name:null,team:null,position:null,id:null}, watchFaceType = '';
 var $needleSec, $needleMin, $needleHour, $floorSelect, $batteryLevel, $clockWrap;
 var timeout = 0;
+
+var pushInt = 1000;
+var walkieLast = '0';
+var assignedRoomList;
 
 /**
 * 초기구동
@@ -17,7 +21,7 @@ $(function () {
 
 
 	//현재 로그인 정보를 받아오고 맞는 화면을 표시함
-	tizen.filesystem.resolve("wgt-private", function(dir) {
+	/*tizen.filesystem.resolve("wgt-private", function(dir) {
 		dir.listFiles(function (fileList) {
 			var tokenFile = null;
 			for (var i=0;i<fileList.length;i++) {
@@ -40,20 +44,28 @@ $(function () {
 				loginInfo['team'] = tmp2[2];
 				loginInfo['position'] = tmp2[3];
 				loginInfo['id'] = tmp2[4];
+
+				//loginInfo['token'] = 1;
+				//loginInfo['name'] = 'SharpART';
+				//loginInfo['team'] = 'team1';
+				//loginInfo['position'] = 'cleaner';
+				//loginInfo['id'] = 'kim';
+
 				setWatchFace();
 
 				fp.close();
 			}, null, "UTF-8");
 		});
-	});
+	});*/
 
-	//setWatchFace();
+	setWatchFace();
+
+	//푸시
+	pushPolling();
 
 	//다시 화면을 띄웠을 때 현재시간을 바로 표시하도록 함
 	document.addEventListener('visibilitychange', function(e) {
         showClock();
-		getBatteryLevel();
-		//hideLoadingPopup();
     });
 });
 
@@ -228,4 +240,137 @@ function callHIMSApp(operation) {
 	},2000);
 	var appCtrl = new tizen.ApplicationControl(operation, null, null, null, [new tizen.ApplicationControlData("HIMSLoginInfo", [loginInfo['token'],loginInfo['name'],loginInfo['team'],loginInfo['position'],loginInfo['id']])]);
 	tizen.application.launchAppControl(appCtrl, null, null, null, null);
+}
+
+function pushPolling() {
+	console.log('pushPolling...');
+	if (loginInfo['token'] == null || loginInfo['token'] == '') {
+		setTimeout(function () {
+			pushPolling2();
+		},pushInt);
+		return;
+	}
+
+	//console.log(loginInfo);
+
+	$.ajax({
+		type:'GET',
+		url:HIMS['apiUrl']+'/api/walkie/msg?last_received='+walkieLast+'&from=latest&num=1&format=mp3',
+		dataType:'json',
+		headers:{
+			"Content-Type":"application/json",
+			"Authorization":"Basic "+loginInfo['token']
+		},
+		success:function(data) {
+			console.log(data);
+			if (data['result'] != null && data['result'].length > 0) {
+				if (walkieLast != '0') {
+					console.log('New Message!');
+					showNotification("New Message","You've got a new message!","HIMS_getChannelList2");
+				}
+				var d = strToDate(data['result'][0]['timestamp']);
+				d.setTime(d.getTime()+1000);
+				walkieLast = d.getFullYear()+'-'+zerofill(d.getMonth()+1,2)+'-'+zerofill(d.getDate(),2)+' '+zerofill(d.getHours(),2)+':'+zerofill(d.getMinutes(),2)+':'+zerofill(d.getSeconds(),2);
+				console.log(walkieLast);
+			}
+
+			setTimeout(function () {
+				pushPolling2();
+			},pushInt);
+			
+		},
+		error:function(xhr, status, error) {
+			console.log(status);
+			//alert(xhr.responseText);
+			//alert(error);
+			setTimeout(function () {
+				pushPolling2();
+			},pushInt);
+			
+		}
+	});
+}
+
+function pushPolling2() {
+	console.log('pushPolling2...');
+	if (loginInfo['token'] == null || loginInfo['token'] == '') {
+		setTimeout(function () {
+			pushPolling();
+		},pushInt);
+		return;
+	}
+
+	if (loginInfo['position'] != 'cleaner') {
+		pushPolling();
+		return;
+	}
+
+	$.ajax({
+		type:'GET',
+		url:HIMS['apiUrl']+'/api/rooms?cleaner_id='+loginInfo['id'],
+		dataType:'json',
+		headers:{
+			"Content-Type":"application/json",
+			"Authorization":"Basic "+loginInfo['token']
+		},
+		success:function(data) {
+			console.log(data);
+			var newFlag = false;
+
+			if (assignedRoomList == null) {
+				assignedRoomList = [];
+				for (var i=0;i<data['result'].length;i++) {
+					assignedRoomList.push(data['result'][i]['assign_id']);
+				}
+
+				setTimeout(function () {
+					pushPolling();
+				},pushInt);
+				return;
+			}
+
+
+			for (var i=0;i<data['result'].length;i++) {
+				if (assignedRoomList.indexOf(data['result'][i]['assign_id']) < 0) {
+					showNotification("New Rooms","Assigned New Rooms","HIMS_getMyRoom");
+					newFlag = true;
+					break;
+					//assignedRoomList.push(data['result'][i]['assign_id']);
+
+				}
+			}
+
+			if (newFlag) {
+				assignedRoomList = [];
+				for (var i=0;i<data['result'].length;i++) {
+					assignedRoomList.push(data['result'][i]['assign_id']);
+				}
+			}
+
+
+			setTimeout(function () {
+				pushPolling();
+			},pushInt);
+		},
+		error:function(xhr, status, error) {
+			console.log(status);
+			//alert(xhr.responseText);
+			setTimeout(function () {
+				pushPolling();
+			},pushInt);
+			
+		}
+	});
+}
+
+function showNotification (title, content, operation) {
+	var appCtrl = new tizen.ApplicationControl(operation, null, null, null, [new tizen.ApplicationControlData(operation, [loginInfo['token'],loginInfo['name'],loginInfo['team'],loginInfo['position'],loginInfo['id']])]);
+	var notificationDict = {
+		content:content,
+		vibration:true,
+		appControl:appCtrl
+	};
+
+	var notification = new tizen.StatusNotification("SIMPLE",title, notificationDict);
+	tizen.notification.post(notification);
 }

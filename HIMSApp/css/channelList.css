@@ -1,5 +1,8 @@
 body {overflow:hidden;}
 #content {width:360px;height:360px;overflow:hidden;}
+#content > .menuBtn {width:40px;height:360px;background:url('./images/common_btn_menu.png') center center no-repeat;position:absolute;right:0;top:0;z-index:6;}
+
+
 #channelList {display:none;}
 #channelList.show {display:block;}
 #channelList > .row.existingChannel {line-height:auto;padding:25px 0;}
@@ -10,7 +13,7 @@ body {overflow:hidden;}
 #channelList > .row.newChannel {font-size:16pt;}
 #channelList > .row.newChannel.current {font-size:20pt;}
 
-#userList {display:none}
+#userList {display:none;}
 #userList.show {display:block;}
 #userList > .row {line-height:120px;padding:0;}
 #userList > .row.selected > div {margin:0 15px;height:120px;background:url('./images/common_check.png') right center no-repeat;background-size:70px 70px;}
@@ -22,3 +25,23 @@ body {overflow:hidden;}
 #titleWrite .title {height:120px;line-height:120px;font-size:24pt;color:#1AB4FF;}
 #titleWrite .inputWrap {height:120px;}
 #titleWrite .inputWrap > input {height:60px;margin-top:30px;padding:0 20px;border-radius:30px;border:none;color:#FFF;background:#333;}
+
+#channelMenu {width:360px;height:360px;display:none;position:absolute;left:0;top:0;z-index:7;background:rgba(0,0,0,0.9);}
+#channelMenu.show {display:block;}
+#channelMenu > .btn {width:120px;height:150px;position:absolute;left:50%;margin-left:-60px;}
+#channelMenu > .btn > .icon {width:120px;height:120px;background:center center no-repeat;background-size:120px 120px;}
+#channelMenu > .btn > .text {height:30px;line-height:30px;}
+#channelMenu > .btnClose {width:60px;height:360px;background:url('./images/common_close.png') center center no-repeat;background-size:30px 30px;position:absolute;right:0px;top:50%;margin-top:-180px;}
+#channelMenu > .btn.add {top:15px;}
+#channelMenu > .btn.add > .icon {background-image:url('./images/channelList_menu_add.png');}
+#channelMenu > .btn.history {bottom:20px;}
+#channelMenu > .btn.history > .icon {background-image:url('./images/channelList_menu_history.png');}
+
+#channelHistory {display:none;}
+#channelHistory.show {display:block;}
+#channelHistory > .row {padding:20px;}
+#channelHistory > .row > .left {height:80px;text-align:left;overflow:hidden;}
+#channelHistory > .row > .left > .name {height:40px;line-height:40px;padding-left:40px;font-size:20pt;background:url('./images/common_reply.png') left center no-repeat;}
+#channelHistory > .row > .left > .time {height:40px;line-height:40px;padding-left:20px;font-size:18pt;}
+#channelHistory > .row > .right {width:80px;height:80px;float:right;background:url('./images/channel_btn_play.png') center center no-repeat;background-size:80px 80px;}
+#channelHistory > .row.play > .right {background-image:url('./images/channel_btn_pause.png');}

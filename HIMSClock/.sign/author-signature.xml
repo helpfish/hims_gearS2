@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>GV5S5TLvIUaFNV4EYcu0ySYK8o9vGMK1h63yMrTwtoA=</DigestValue>
+<DigestValue>SOWq3vEWcVKl3zTsLioDBnUFaOXwnVrOXyPytVStHAA=</DigestValue>
 </Reference>
 <Reference URI="css%2Fcommon.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -84,11 +84,11 @@
 </Reference>
 <Reference URI="js%2Fcommon.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>NcF1p43oWcm9M+cBnoJ4mMXsBM0/ppVAntivVOiAX9A=</DigestValue>
+<DigestValue>KHEfZP/1zabJd+Hu6rzWjrgVf41zWgpv15iWmDRAyPw=</DigestValue>
 </Reference>
 <Reference URI="js%2Findex.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>//xvHPYKMqzKH1qlnNV6ump+QGyXVJZqok+ag8xwdtw=</DigestValue>
+<DigestValue>sfjXnFbgv0qVfAl/sjT63NTbm1Rj7ZYRCLxJfqvbz8g=</DigestValue>
 </Reference>
 <Reference URI="lib%2Fjquery%2Fjquery-2.1.4.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -103,11 +103,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-UwXBE/KMfAC0fNEbiq5ssoNMYTYOAMj27nieg4Waop3F29sCrQVHMvEltDLgyqq68e+KFDKIyrXU
-P63Qd0wGFV/SVZMnJdkIVgesB+5ZuccgeRfrBnTOnOPUv/Iqe0bc8xWIIG8gxVW0298dbKfk2yxV
-60ddum6umEitRFRqk9ECNCmDyNC383LwQEEqnX7TNJR+wlW748V5NXzFw0rlSpLz4OvON5HMYSLs
-EG8KEjyf01a3PNP+AowB1l7fgMOEJoqD5V6rfUNkKAxvoMF3HImDBYTGpB+Z45R1znBdqiLI7Siw
-xMZDe4Ps4Np0M5zFlOtI72GY8PCgsFHcD6gPAw==
+TQKVJW9INT52Y6nM3ehWhhkTswVLo2y0NX4eLuc1YvXvlWn3rtkKsJFhyXrG9gWhWekXNrgYc3u+
+iPv505SqlMx7q8vQhBykRIOmQUhIJCkMDJMexwyCLZxgrH9JYeJbA0MVBIMtpsIk9aXllaHqQ84n
+3hjntw9SNbnkQsDGQrP++GigMvT86iie4Mvbeq1iaYFBHv71/gqgvu2mxcFKVX145XvbNU1yVKrC
+0D8Hfl0uVsSmXp6GbHfGUCOtJLALtgeT3LR6Z/xQOz2r+6XoAJpiIJ8YwycZbvZF/uJG0tX3am74
+KaPIEJhK/XXYM0V0aVDWtyYqim7dxFspV0wwgw==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

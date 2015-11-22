@@ -51,8 +51,10 @@ body {overflow:hidden;}
 #channelHistory > .row > .left > .name {height:40px;line-height:40px;padding-left:40px;font-size:20pt;background:url('./images/common_reply.png') left center no-repeat;}
 #channelHistory > .row > .left > .time {height:40px;line-height:40px;padding-left:20px;font-size:18pt;}
 #channelHistory > .row > .right {width:80px;height:80px;float:right;background:url('./images/channel_btn_play.png') center center no-repeat;background-size:80px 80px;}
-
 #channelHistory > .row.play > .right {background-image:url('./images/channel_btn_pause.png');}
+
+#channelUser {display:none;}
+#channelUser.show {display:block;}
 
 
 

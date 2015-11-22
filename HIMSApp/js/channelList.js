@@ -1,8 +1,10 @@
 /**
 * 전역변수
 **/
-var $channelList, $userList, $titleWrite;
+var $channelList, $userList, $titleWrite, $channelMenu, $channelHistory;
 var selectedUserList = [];
+
+var audioCtx, soundSource, volumeNode;
 
 /**
 * 초기구동
@@ -15,20 +17,32 @@ $(function () {
 	$channelList = $('#channelList');
 	$userList = $('#userList');
 	$titleWrite = $('#titleWrite');
+	$channelMenu = $('#channelMenu');
+	$channelHistory = $('#channelHistory');
 
 	//yhList구동
 	getChannelList();
+
+	//audioContext 로드
+	audioCtx = new webkitAudioContext();
 
 	document.addEventListener('tizenhwkey', function(e) {
         if(e.keyName == "back") {
 			if ($userList.hasClass('show')) {
 				$userList.removeClass('show');
 				$channelList.addClass('show');
+				menuBtnShow();
 				
 			} else if ($titleWrite.hasClass('show')) {
 				$titleWrite.removeClass('show');
 				$channelList.addClass('show');
+				menuBtnShow();
 				
+			} else if ($channelHistory.hasClass('show')) {
+				historyClose();
+			} else if ($channelMenu.hasClass('show')) {
+				$channelMenu.removeClass('show');
+
 			} else {
 				tizen.application.getCurrentApplication().exit();
 			}
@@ -37,10 +51,12 @@ $(function () {
 
 	document.addEventListener("rotarydetent", function(event){
 		if (event.detail.direction === "CW") {
-			if ($channelList.hasClass('show')) $channelList.moveNext();
+			if ($channelHistory.hasClass('show')) $channelHistory.moveNext();
+			else if ($channelList.hasClass('show')) $channelList.moveNext();
 			else if ($userList.hasClass('show')) $userList.moveNext();
 		} else {
-			if ($channelList.hasClass('show')) $channelList.movePrev();
+			if ($channelHistory.hasClass('show')) $channelHistory.movePrev();
+			else if ($channelList.hasClass('show')) $channelList.movePrev();
 			else if ($userList.hasClass('show')) $userList.movePrev();
 		}
 	}, false);
@@ -53,7 +69,7 @@ $(function () {
 function getChannelList() {
 	$.ajax({
 		type:'GET',
-		url:HIMS['apiUrl']+'/api/walkie/channel',
+		url:HIMS['apiUrl']+'/api/walkie/channel?joined_member='+HIMS['loginInfo']['id'],
 		dataType:'json',
 		headers:{
 			"Content-Type":"application/json",
@@ -66,11 +82,9 @@ function getChannelList() {
 			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
-				hideLoadingPopup();
+				tizen.application.getCurrentApplication().exit();
 				return;
 			}
-
-			
 
 			//HTML 구성
 			var html = '';
@@ -90,22 +104,27 @@ function getChannelList() {
 				title:'Channel',
 				onclick:function (idx) {
 					
+				},
+				oninit:function () {
+					hideLoadingPopup();
+					if ($_GET['history'] == 1) historyOpen();
 				}
 			});
-			hideLoadingPopup();
 		},
 		error:function(xhr, status, error) {
-			console.log(status);
+			alert('Error Occured!');
+			tizen.application.getCurrentApplication().exit();
+			//console.log(status);
 			alert(xhr.responseText);
 			
 		}
 	});
-
-	hideLoadingPopup();
 }
 
 //서버에서 전체 사용자 목록을 받아서 띄워주는 함수
 function getUserList () {
+	menuClose();
+	menuBtnHide();
 	selectedUserList = [HIMS['loginInfo']['id']];
 	showLoadingPopup();
 
@@ -238,4 +257,126 @@ function createChannel () {
 
 function moveToChannel(id) {
 	location.href='./channel.html?id='+encodeURIComponent(id);
+}
+
+function menuOpen() {
+	$channelMenu.addClass('show');
+}
+
+function menuClose() {
+	$channelMenu.removeClass('show');
+}
+
+function menuBtnShow () {
+	$('#content > .menuBtn').show();
+}
+
+function menuBtnHide() {
+	$('#content > .menuBtn').hide();
+}
+
+function historyOpen() {
+	$.ajax({
+		type:'GET',
+		url:HIMS['apiUrl']+'/api/walkie/msg?last_received=0&from=latest&num=10&format=mp3',
+		dataType:'json',
+		headers:{
+			"Content-Type":"application/json",
+			"Authorization":"Basic "+HIMS['loginInfo']['token']
+		},
+		beforeSend:function () {
+			showLoadingPopup();
+		},
+		success:function(data) {
+			//alert(JSON.stringify(data));
+			if (data['error'] != null) {
+				alert(data['error']);
+				hideLoadingPopup();
+				return;
+			}
+
+			if (data['result'] == null) {
+				data['result'] = [];
+			}
+
+			var html = "";
+			for (var i=0;i<data['result'].length;i++) {
+				html += "<div class='row' msg='"+escapeHtml(data['result'][i]['msg'])+"'>\
+					<div class='right'></div>\
+					<div class='left'>\
+						<div class='name'>"+escapeHtml(data['result'][i]['member_id'])+"</div>\
+						<div class='time'>"+escapeHtml(data['result'][i]['timestamp'].substr(0,16))+"</div>\
+					</div>\
+				</div>";
+			}
+
+			$channelHistory.html(html);
+			$channelHistory.yhList({
+				title:'History',
+				onclick:function (idx) {
+					var $this = $channelHistory.find('.row:eq('+idx+')');
+
+					if ($this.hasClass('play')) {
+						try {
+							soundSource.noteOff(0);
+						} catch (ignore) {
+
+						}
+						$this.removeClass('play');
+						return;
+					} 
+
+					$this.addClass('play');
+					var audioData = base64ToArrayBuffer($channelHistory.find('.row:eq('+idx+')').attr('msg'));
+					soundSource = audioCtx.createBufferSource();
+					volumeNode = audioCtx.createGainNode();
+					
+					try {
+						var soundBuffer = audioCtx.createBuffer(audioData, true);
+					} catch (e) {
+						alert(e);
+						return;
+					}
+					soundSource.buffer = soundBuffer;
+					
+
+					// 노드 연결
+					soundSource.connect(volumeNode);
+					volumeNode.connect(audioCtx.destination);
+
+					// 기본 셋팅
+					volumeNode.gain.value = 8;
+					//soundSource.loop = true;
+					soundSource.onended = function () {
+						//soundSource.noteOff(0);
+						$this.removeClass('play');
+						//alert('onended!');
+					};
+
+					// Finally
+					//alert(audioCtx.currentTime);
+					soundSource.noteOn(0);
+					//soundSource.start();
+				}
+			});
+
+			hideLoadingPopup();
+		},
+		error:function(xhr, status, error) {
+			console.log(status);
+			alert(xhr.responseText);
+			
+		}
+	});
+
+	menuBtnHide();
+	$channelList.removeClass('show');
+	$channelMenu.removeClass('show');
+	$channelHistory.addClass('show');
+}
+
+function historyClose() {
+	$channelList.addClass('show');
+	$channelHistory.removeClass('show');
+	menuBtnShow();
 }

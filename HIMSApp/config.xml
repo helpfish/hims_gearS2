@@ -21,7 +21,11 @@
         <tizen:src name="channelList.html"/>
         <tizen:operation name="HIMS_getChannelList"/>
     </tizen:app-control>
-    <tizen:application id="2oy6U4Dm61.HIMSApp" package="2oy6U4Dm61" required_version="1.0"/>
+    <tizen:app-control>
+        <tizen:src name="channelList.html?history=1"/>
+        <tizen:operation name="HIMS_getChannelList2"/>
+    </tizen:app-control>
+    <tizen:application id="2oy6U4Dm61.HIMSApp" package="2oy6U4Dm61" required_version="2.3"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>

@@ -29,9 +29,6 @@ function HIMS_init() {
 		HIMS['loginInfo']['position'] = 'manager';
 		HIMS['loginInfo']['id'] = 'admin';
 	}
-	
-	HIMS['loginInfo']['token'] = 1;
-	
 }
 
 /**
