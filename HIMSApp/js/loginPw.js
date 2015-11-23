@@ -40,30 +40,18 @@ $(function () {
 **/
 //입력한 아이디와 비밀번호로 로그인 요청 보내는 함수
 function doLogin() {
-	//console.log($('input').serialize());
 	if (reqAppCtrl && reqAppCtrl.callerAppId) {
-		/*try {
-			reqAppCtrl.replyResult([new tizen.ApplicationControlData("HIMSLoginInfo", ['1','Young-ho Jin','Development','manager'])]);
-		} catch (e) {
-
-		}
-
-		tizen.application.getCurrentApplication().exit();*/
-	
 		var loginData = {};
 		loginData.id = $('input[name=id]').val();
 		loginData.pw = $('input[name=pw]').val();
 
-		$.ajax({
+		location.hash = "doLogin";
+		HIMSApiCall({
 			type:'POST',
 			url:HIMS['apiUrl']+'/api/users/login',
 			data:JSON.stringify(loginData),
-			dataType:'json',
 			headers:{
 				"Content-Type":"application/json"
-			},
-			beforeSend:function () {
-				showLoadingPopup();
 			},
 			success:function(data) {
 				try {
@@ -73,13 +61,6 @@ function doLogin() {
 				}
 
 				tizen.application.getCurrentApplication().exit();
-
-				//hideLoadingPopup();
-			},
-			error:function(xhr, status, error) {
-				var data = JSON.parse(xhr.responseText);
-				hideLoadingPopup();
-				alert(data['message']);
 			}
 		});
 	}

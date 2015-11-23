@@ -30,18 +30,14 @@ $(function () {
 * 함수선언
 **/
 function getNameList() {
-	//필요한 것만
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/users',
 		dataType:'json',
 		headers:{
 			"Content-Type":"application/json"
 		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
-		success:function(data) {
+		success:function (data) {
 			html = '';
 			for (var i=0;i<data['result'].length;i++) {
 				html += "<div class='row' mbId='"+escapeHtml(data['result'][i]['id'])+"'>"+escapeHtml(data['result'][i]['name'])+"</div>";
@@ -58,10 +54,6 @@ function getNameList() {
 			});
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			alert("Unable to connect to server.");
-			tizen.application.getCurrentApplication().exit();
 		}
 	});
 }

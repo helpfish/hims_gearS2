@@ -2,7 +2,7 @@
 * 페이지 공통 변수
 **/
 var HIMS = {}, $_GET = {};
-HIMS['apiUrl'] = 'http://54.67.101.217';
+HIMS['apiUrl'] = 'http://54.183.200.158';
 
 /**
 * 페이지 공통 초기 구동
@@ -171,4 +171,56 @@ function base64ToArrayBuffer(base64) {
         bytes[i] = binary_string.charCodeAt(i);
     }
     return bytes.buffer;
+}
+
+//ajax요청 통합
+function HIMSApiCall(option) {
+	try {
+		var token = HIMS['loginInfo']['token'];
+	} catch (e) {
+		token = "";
+	}
+
+	option = $.extend({
+		type:'GET',
+		url:'',
+		dataType:'json',
+		timeout:10000,
+		headers:{
+			"Content-Type":"application/json",
+			"Authorization":"Basic "+token
+		},
+		beforeSend:function () {
+			showLoadingPopup();
+		},
+		success:function(data) {
+			hideLoadingPopup();
+		},
+		error:function(xhr, status, error) {
+			if (status == 'timeout') {
+				alert('Connection timeout.');
+			} else if (status == 'error') {
+				if (error == 'NOT FOUND') {
+					alert('Invalid API Call.');	
+				} else {
+					alert('Unable to connect to server.');
+				}
+			}
+
+			if (history.length == 1) {
+				tizen.application.getCurrentApplication().exit();
+			} else {
+				history.back();
+				hideLoadingPopup();
+			}
+			//console.log(xhr);
+			//console.log(status);
+			//console.log(error);
+			//alert(xhr.responseText);
+			
+		}
+	}, option);
+
+	$.ajax(option);
+	
 }
