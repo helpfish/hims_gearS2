@@ -40,7 +40,6 @@ function getStairList () {
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/floors',
 		success:function(data) {
-			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();

@@ -31,7 +31,6 @@ $(function () {
 		type:'alert',
 		btnAText:'Write',
 		onclickA:function () {
-			//console.log($commentWrite.find('textarea').val());
 			commentWriteSubmit($commentWrite.find('textarea').val());
 		}
 	});

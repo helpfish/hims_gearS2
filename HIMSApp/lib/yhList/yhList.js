@@ -106,7 +106,6 @@ $.fn.yhList = function (options) {
 		$this.css('-webkit-transition','all 0s ease 0s').off('webkitTransitionEnd');
 		if (webkitTransitionEndTimeout != null) clearTimeout(webkitTransitionEndTimeout);
 
-		//console.log('touchStart : '+touch.pageY+'('+e.timeStamp+')');
 
 	}
 
@@ -138,8 +137,6 @@ $.fn.yhList = function (options) {
 			'-webkit-transform':'translate3d(0px,'+offsetY+'px,0px)'
 		});
 
-
-		//console.log('touchMove : '+touch.pageY+'('+e.timeStamp+')');
 	}
 
 	function onTouchEnd(e) {
@@ -164,15 +161,10 @@ $.fn.yhList = function (options) {
 		var minusFlag = 1;
 		if (veloY < 0) minusFlag = -1;
 		//var slideTime =	Math.abs(veloY/fricY);	//미끄러지는 시간 ()
-		//console.log('distY : '+distY+'px');
-		//console.log('veloY : '+veloY+'px/s');
 
 		//idx로부터 현재 기본 위치를 유추해내고 최종적으로 미끄러지고 나서 도착하는 위치계산
 		var offsetY = -idx*120;
 		offsetY += parseInt(distY+Math.pow(veloY/c,2)*120*minusFlag);
-
-		//console.log(parseInt(offsetY - distY - Math.pow(veloY/c,2)*120*minusFlag));
-		//console.log(offsetY);
 
 		var tmp = offsetY%120;
 		if (Math.abs(tmp) < 60) offsetY -= tmp;
@@ -186,16 +178,10 @@ $.fn.yhList = function (options) {
 		if (offsetY > 0) offsetY = 0;
 		else if (offsetY < -120*(rowCnt-1)) offsetY = -120*(rowCnt-1);
 
-		//console.log(offsetY);
-
 		//속도에 따라 걸리는 시간 조정
 		//속도가 너무 느릴 경우 c값으로 지정
-		//console.log(offsetY+', '+((-120*idx)+distY));
-		//console.log(Math.abs((offsetY-(-120*idx+distY))/veloY*2));
 		if (Math.abs(veloY) < c) veloY = c*minusFlag;
 		var slideTime = Math.floor(Math.abs((offsetY-(-120*idx+distY))/veloY*2)*1000);
-
-		//console.log(slideTime);
 
 		//움직임
 		$this.css({
@@ -205,12 +191,6 @@ $.fn.yhList = function (options) {
 			//transition효과가 끝나면
 			//webkitTransitionEnd 트리거 해제
 			$(this).off('webkitTransitionEnd').css('-webkit-transition','');
-
-			//if (onTouch) {
-			//	console.log('onTouch');
-			//	return;
-			//}
-			//console.log('transitionEnd');
 
 			//index이동
 			$rowList.removeClass('current');
@@ -223,13 +203,7 @@ $.fn.yhList = function (options) {
 		webkitTransitionEndTimeout = setTimeout(function () {
 			$this.trigger('webkitTransitionEnd');
 		},slideTime);
-		//console.log(offsetY);
 		
-		
-
-		//-webkit-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);, y = -x(x-2)
-		
-		//console.log('touchEnd : '+touch.pageY+'('+e.timeStamp+')');
 		onTouch = false;
 	}
 

@@ -134,7 +134,6 @@ function menuClose () {
 }
 
 function historyOpen() {
-	location.hash = "history";
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10&format=mp3',
@@ -226,12 +225,10 @@ function historyClose() {
 }
 
 function userListOpen() {
-	location.hash = "userList";
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id'],
 		success:function(data) {
-			//console.log(data);
 			var memberList = data['result'][0]['member_list'];
 			var html = '';
 			for (var i=0;i<memberList.length;i++) {
@@ -241,18 +238,7 @@ function userListOpen() {
 			$channelUser.html(html);
 			$channelUser.yhList();
 
-			//$loginNameList.html(html);
-
-			//yhList구동
-			/*$loginNameList.yhList({
-				onclick:function (idx) {
-					var mbId = $loginNameList.children('.row:eq('+idx+')').attr('mbId');
-					location.href='./loginPw.html?mbId='+encodeURIComponent(mbId);
-				}
-			});*/
-
 			hideLoadingPopup();
-			history.back();
 		}
 	});
 
@@ -303,10 +289,10 @@ function recordStart() {
 			recordProcess();
 
 		}, function (e) {
-			console.log('recordStart failed.');
+			//console.log('recordStart failed.');
 		});
 	}, function () {
-		console.log('applySettings failed');
+		//console.log('applySettings failed');
 	});
 }
 

@@ -40,7 +40,6 @@ function getMyRoomInfo () {
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms?cleaner_id='+HIMS['loginInfo']['id'],
 		success:function(data) {
-			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();

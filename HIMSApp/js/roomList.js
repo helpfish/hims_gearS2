@@ -38,7 +38,6 @@ function getRoomList() {
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms',
 		success:function(data) {
-			console.log(data);
 			var html = '';
 			for (var i=0;i<data['result'].length;i++) {
 				//해당 층의 방 정보만 표시하기

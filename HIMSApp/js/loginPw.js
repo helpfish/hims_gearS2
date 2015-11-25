@@ -45,7 +45,6 @@ function doLogin() {
 		loginData.id = $('input[name=id]').val();
 		loginData.pw = $('input[name=pw]').val();
 
-		location.hash = "doLogin";
 		HIMSApiCall({
 			type:'POST',
 			url:HIMS['apiUrl']+'/api/users/login',

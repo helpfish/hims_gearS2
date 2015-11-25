@@ -212,12 +212,9 @@ function HIMSApiCall(option) {
 			if (history.length == 1) {
 				tizen.application.getCurrentApplication().exit();
 			} else {
-				history.back();
+				//history.back();
 				hideLoadingPopup();
 			}
-			//console.log(xhr);
-			//console.log(status);
-			//console.log(error);
 			//alert(xhr.responseText);
 			
 		}

@@ -43,7 +43,6 @@ function getRoomDetail (roomNum) {
 
 					}
 
-					console.log(data['result'][i]);
 					var statusText, checkIn='-----, --:--', checkOut='-----, --:--';
 
 					if (data['result'][i]['state'].toLowerCase() == 'vc' || data['result'][i]['state'].toLowerCase() == 'oc') statusText = 'Cleaned';

@@ -57,7 +57,6 @@ function getEvaluationData() {
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/form?form_type='+$_GET['type'],
 		success:function(data) {
-			console.log(data);
 			evalData = data['result'];
 			if (data['error'] != null) {
 				alert(data['error']);
@@ -141,7 +140,6 @@ function evalSubmit() {
 		url:HIMS['apiUrl']+'/api/evaluation',
 		data:JSON.stringify(postData),
 		success:function(data) {
-			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();

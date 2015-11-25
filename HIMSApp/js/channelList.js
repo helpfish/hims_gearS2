@@ -117,7 +117,6 @@ function getUserList () {
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/users',
 		success:function(data) {
-			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();
@@ -149,13 +148,11 @@ function getUserList () {
 					if ((i = selectedUserList.indexOf(mbId)) > -1) {
 						$userList.find('.row:eq('+idx+')').removeClass('selected');
 						selectedUserList.splice(i,1);
-						//console.log('unselect');
 
 					//selectedUserList에 없는 경우
 					} else {
 						$userList.find('.row:eq('+idx+')').addClass('selected');
 						selectedUserList.push(mbId);
-						//console.log('select');
 					}
 				}
 			});
@@ -177,8 +174,6 @@ function showTitleWrite () {
 	}
 
 	title = title.substr(0,title.length-2);
-	console.log(title);
-	
 
 	$titleWrite.yhDialog({
 		type:'alert',
@@ -194,7 +189,6 @@ function createChannel () {
 	var postData = {};
 	postData.channel_name = $titleWrite.find('input[name=channelName]').val();
 	postData.member_list = selectedUserList;
-	console.log(postData);
 
 	HIMSApiCall({
 		type:'POST',

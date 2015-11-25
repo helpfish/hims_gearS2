@@ -32,7 +32,6 @@ function getRoomDetail (roomNum) {
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms',
 		success:function(data) {
-			console.log(data);
 			var html = '';
 			var findFlag = false;
 			for (var i=0;i<data['result'].length;i++) {
