@@ -36,17 +36,9 @@ $(function () {
 * 함수선언
 **/
 function getStairList () {
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/floors',
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			console.log(data);
 			if (data['error'] != null) {
@@ -65,11 +57,6 @@ function getStairList () {
 			});
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }

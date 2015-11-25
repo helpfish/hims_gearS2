@@ -88,17 +88,9 @@ $(function () {
 * 함수선언
 **/
 function channelInit() {
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id'],
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			if (data['error'] != null) {
 				alert(data['error']);
@@ -108,11 +100,6 @@ function channelInit() {
 
 			$channel.find('.title').html(escapeHtml(data['result'][0]['channel_name']));
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }
@@ -147,17 +134,10 @@ function menuClose () {
 }
 
 function historyOpen() {
-	$.ajax({
+	location.hash = "history";
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10&format=mp3',
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			//alert(JSON.stringify(data));
 			if (data['error'] != null) {
@@ -232,11 +212,6 @@ function historyOpen() {
 			});
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 
@@ -251,17 +226,10 @@ function historyClose() {
 }
 
 function userListOpen() {
-	$.ajax({
+	location.hash = "userList";
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id'],
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			//console.log(data);
 			var memberList = data['result'][0]['member_list'];
@@ -284,10 +252,7 @@ function userListOpen() {
 			});*/
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			console.log(xhr.responseText);
+			history.back();
 		}
 	});
 
@@ -382,15 +347,10 @@ function recordFileSubmit() {
 								var postData = {};
 								postData.msg = e.target.result.substr(22);
 
-								$.ajax({
+								HIMSApiCall({
 									type:'POST',
 									url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg',
 									data:JSON.stringify(postData),
-									dataType:'json',
-									headers:{
-										"Content-Type":"application/json",
-										"Authorization":"Basic "+HIMS['loginInfo']['token']
-									},
 									success:function(data) {
 										//alert(JSON.stringify(data));
 										if (data['error'] != null) {
@@ -400,11 +360,6 @@ function recordFileSubmit() {
 										}
 
 										//hideLoadingPopup();
-									},
-									error:function(xhr, status, error) {
-										console.log(status);
-										alert(xhr.responseText);
-										
 									}
 								});
 

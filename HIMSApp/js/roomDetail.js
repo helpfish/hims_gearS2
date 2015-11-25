@@ -27,16 +27,9 @@ $(function () {
 * 함수선언
 **/
 function getRoomDetail (roomNum) {
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms',
-		dataType:'json',
-		headers:{
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			var html = '';
 			var findFlag = false;
@@ -80,22 +73,14 @@ function getRoomDetail (roomNum) {
 			//hideLoadingPopup();
 
 			
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
 		}
 	});
 }
 
 function getCleanerName () {
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/users?room_num='+$_GET['roomNum'],
-		dataType:'json',
-		headers:{
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			try {
 				var cleanerName = data['result'][0]['name'].charAt(0).toUpperCase()+data['result'][0]['name'].slice(1).toLowerCase();
@@ -106,10 +91,6 @@ function getCleanerName () {
 			$content.find('.mbName').html(cleanerName);
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
 		}
 	});
 }

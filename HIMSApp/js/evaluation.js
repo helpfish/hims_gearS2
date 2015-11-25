@@ -53,14 +53,9 @@ $(function () {
 //서버로부터 평가항목을 받아오는 함수
 function getEvaluationData() {
 	//$_GET['type'] = 'long';
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/form?form_type='+$_GET['type'],
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			console.log(data);
 			evalData = data['result'];
@@ -78,11 +73,6 @@ function getEvaluationData() {
 
 			showEvalData();
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }
@@ -146,15 +136,10 @@ function evalSubmit() {
 		postData.inspection_form_dict[evalData[i]['id']].comment = cmtList[i];
 	}
 
-	$.ajax({
+	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/evaluation',
 		data:JSON.stringify(postData),
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			console.log(data);
 			if (data['error'] != null) {
@@ -166,11 +151,6 @@ function evalSubmit() {
 			alert('Evaluation Success!');
 			history.back();
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }

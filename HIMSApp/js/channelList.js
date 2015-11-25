@@ -67,19 +67,10 @@ $(function () {
 **/
 //현재 존재하는 채널 목록을 출력하는 함수
 function getChannelList() {
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel?joined_member='+HIMS['loginInfo']['id'],
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
-			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				tizen.application.getCurrentApplication().exit();
@@ -110,13 +101,6 @@ function getChannelList() {
 					if ($_GET['history'] == 1) historyOpen();
 				}
 			});
-		},
-		error:function(xhr, status, error) {
-			alert('Error Occured!');
-			tizen.application.getCurrentApplication().exit();
-			//console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }
@@ -129,17 +113,9 @@ function getUserList () {
 	showLoadingPopup();
 
 
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/users',
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			console.log(data);
 			if (data['error'] != null) {
@@ -186,11 +162,6 @@ function getUserList () {
 			$channelList.removeClass('show');
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 
@@ -225,18 +196,10 @@ function createChannel () {
 	postData.member_list = selectedUserList;
 	console.log(postData);
 
-	$.ajax({
+	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/walkie/channel',
 		data:JSON.stringify(postData),
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			if (data['error'] != null) {
 				alert(data['error']);
@@ -246,11 +209,6 @@ function createChannel () {
 
 			moveToChannel(data['result']['channel_id']);
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }
@@ -276,17 +234,9 @@ function menuBtnHide() {
 }
 
 function historyOpen() {
-	$.ajax({
+	1HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/msg?last_received=0&from=latest&num=10&format=mp3',
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			//alert(JSON.stringify(data));
 			if (data['error'] != null) {
@@ -361,11 +311,6 @@ function historyOpen() {
 			});
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 

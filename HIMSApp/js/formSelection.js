@@ -14,7 +14,6 @@ $(function () {
 	$content = $('#content');	
 
 	//링크 및 이름 세팅
-	showLoadingPopup();
 	getFormInfo();
 
 	document.addEventListener('tizenhwkey', function(e) {
@@ -27,14 +26,9 @@ $(function () {
 //이미 평가한 form인지 체크
 function getFormInfo() {
 	$content.find('.nameWrap').html($_GET['cleanerName']);
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms?cleaner_id='+HIMS['loginInfo']['id'],
-		dataType:'json',
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			console.log(data);
 			if (data['error'] != null) {
@@ -44,14 +38,8 @@ function getFormInfo() {
 			}
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
-	hideLoadingPopup();
 }
 
 function evalShortForm () {

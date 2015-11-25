@@ -38,13 +38,9 @@ $(function () {
 **/
 function getStairInfo () {
 //필요한 것만
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms',
-		dataType:'json',
-		headers:{
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			if (data['error'] != null) {
 				alert(data['error']);
@@ -71,11 +67,6 @@ function getStairInfo () {
 			$statusWrap.find('.notCleaned > .num').html(dirtyCnt);
 			$statusWrap.find('.cleaned > .num').html(cleanCnt);
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }

@@ -34,17 +34,9 @@ $(function () {
 * 함수선언
 **/
 function getRoomList() {
-//필요한 것만
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms?cleaner_id='+HIMS['loginInfo']['id'],
-		dataType:'json',
-		headers:{
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
-		beforeSend:function () {
-			showLoadingPopup();
-		},
 		success:function(data) {
 			var html = '';
 			for (var i=0;i<data['result'].length;i++) {
@@ -66,10 +58,6 @@ function getRoomList() {
 			});
 
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
 		}
 	});
 }

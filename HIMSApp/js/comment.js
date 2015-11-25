@@ -76,23 +76,12 @@ function commentWriteSubmit(cmtContent) {
 	var postData = {};
 	postData.requirement = cmtContent;
 
-	$.ajax({
+	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/requirements/'+$_GET['roomNum'],
-		dataType:'json',
-		data:JSON.stringify(postData),
-		headers:{
-			"Content-Type":"application/json",
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			alert('OK');
 			history.back();		
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }

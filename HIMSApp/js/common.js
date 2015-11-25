@@ -202,6 +202,8 @@ function HIMSApiCall(option) {
 			} else if (status == 'error') {
 				if (error == 'NOT FOUND') {
 					alert('Invalid API Call.');	
+				} else if (error == 'INTERNAL SERVER ERROR') {
+					alert('Unable to connect to server.');
 				} else {
 					alert('Unable to connect to server.');
 				}

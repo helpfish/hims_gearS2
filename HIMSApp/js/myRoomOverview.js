@@ -36,13 +36,9 @@ $(function () {
 **/
 function getMyRoomInfo () {
 //필요한 것만
-	$.ajax({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms?cleaner_id='+HIMS['loginInfo']['id'],
-		dataType:'json',
-		headers:{
-			"Authorization":"Basic "+HIMS['loginInfo']['token']
-		},
 		success:function(data) {
 			console.log(data);
 			if (data['error'] != null) {
@@ -61,11 +57,6 @@ function getMyRoomInfo () {
 			$roomList.html(html);
 			$content.children('.title').html(roomCnt+'Rooms');
 			hideLoadingPopup();
-		},
-		error:function(xhr, status, error) {
-			console.log(status);
-			alert(xhr.responseText);
-			
 		}
 	});
 }
