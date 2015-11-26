@@ -228,11 +228,10 @@ function menuBtnHide() {
 }
 
 function historyOpen() {
-	1HIMSApiCall({
+	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/msg?last_received=0&from=latest&num=10&format=mp3',
 		success:function(data) {
-			//alert(JSON.stringify(data));
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();
@@ -258,6 +257,27 @@ function historyOpen() {
 			$channelHistory.yhList({
 				title:'History',
 				onclick:function (idx) {
+					/*var $this = $channelHistory.find('.row:eq('+idx+')');
+					var audio = new Audio();
+					audio.onloadedmetadata = function () {
+						console.log('loadedmetadata : '+audio.duration);
+						alert('loadedmetadata : '+audio.duration);
+					};
+					audio.onpause = function () {
+						console.log('play ended!');
+						//alert(audio.duration);
+						$this.removeClass('play');
+					};
+
+					//audio.src = $this.attr('msg_url');
+					audio.src='http://0ho.kr/~jason555/02.mp3';
+					
+					
+					audio.play();
+					//audio.play();
+					//$this.addClass('play');*/
+					
+					
 					var $this = $channelHistory.find('.row:eq('+idx+')');
 
 					if ($this.hasClass('play')) {

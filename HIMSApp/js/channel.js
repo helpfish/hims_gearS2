@@ -53,7 +53,7 @@ $(function () {
 				try {
 					audioCtrl.release();
 					isRecordAvailable = false;
-				} catch (e) {
+				} catch (e2) {
 
 				}
 				history.back();
