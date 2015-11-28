@@ -4,7 +4,7 @@
 var $channelList, $userList, $titleWrite, $channelMenu, $channelHistory;
 var selectedUserList = [];
 
-var audioCtx, soundSource, volumeNode;
+//var audioCtx, soundSource, volumeNode;
 
 /**
 * 초기구동
@@ -24,7 +24,7 @@ $(function () {
 	getChannelList();
 
 	//audioContext 로드
-	audioCtx = new webkitAudioContext();
+	//audioCtx = new webkitAudioContext();
 
 	document.addEventListener('tizenhwkey', function(e) {
         if(e.keyName == "back") {
@@ -230,8 +230,9 @@ function menuBtnHide() {
 function historyOpen() {
 	HIMSApiCall({
 		type:'GET',
-		url:HIMS['apiUrl']+'/api/walkie/msg?last_received=0&from=latest&num=10&format=mp3',
+		url:HIMS['apiUrl']+'/api/walkie/msg?last_received=0&from=latest&num=10&format=mp3&encoding=multipart',
 		success:function(data) {
+			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();
@@ -244,7 +245,7 @@ function historyOpen() {
 
 			var html = "";
 			for (var i=0;i<data['result'].length;i++) {
-				html += "<div class='row' msg='"+escapeHtml(data['result'][i]['msg'])+"'>\
+				html += "<div class='row' msg='"+escapeHtml(data['result'][i]['msg_url'])+"'>\
 					<div class='right'></div>\
 					<div class='left'>\
 						<div class='name'>"+escapeHtml(data['result'][i]['member_id'])+"</div>\
@@ -257,28 +258,29 @@ function historyOpen() {
 			$channelHistory.yhList({
 				title:'History',
 				onclick:function (idx) {
-					/*var $this = $channelHistory.find('.row:eq('+idx+')');
+					var $this = $channelHistory.find('.row:eq('+idx+')');
 					var audio = new Audio();
-					audio.onloadedmetadata = function () {
-						console.log('loadedmetadata : '+audio.duration);
-						alert('loadedmetadata : '+audio.duration);
-					};
-					audio.onpause = function () {
-						console.log('play ended!');
+					//audio.onloadedmetadata = function () {
+					//	console.log('loadedmetadata : '+audio.duration);
+					//	alert('loadedmetadata : '+audio.duration);
+					//};
+					//audio.onpause = function () {
+					//	console.log('play ended!');
 						//alert(audio.duration);
-						$this.removeClass('play');
-					};
+					//	$this.removeClass('play');
+					//};
 
-					//audio.src = $this.attr('msg_url');
-					audio.src='http://0ho.kr/~jason555/02.mp3';
+					audio.src = $this.attr('msg');
+					//alert(audio.src);
+					//audio.src='http://0ho.kr/~jason555/02.mp3';
 					
 					
 					audio.play();
 					//audio.play();
-					//$this.addClass('play');*/
+					//$this.addClass('play');
 					
 					
-					var $this = $channelHistory.find('.row:eq('+idx+')');
+					/*var $this = $channelHistory.find('.row:eq('+idx+')');
 
 					if ($this.hasClass('play')) {
 						try {
@@ -320,7 +322,7 @@ function historyOpen() {
 					// Finally
 					//alert(audioCtx.currentTime);
 					soundSource.noteOn(0);
-					//soundSource.start();
+					//soundSource.start();*/
 				}
 			});
 

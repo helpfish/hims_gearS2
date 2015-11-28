@@ -345,7 +345,7 @@ function recordFileSubmit() {
 											return;
 										}
 
-										//hideLoadingPopup();
+										hideLoadingPopup();
 									}
 								});
 
