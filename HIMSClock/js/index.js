@@ -62,6 +62,7 @@ $(function () {
 
 	//푸시
 	pushPolling();
+	//pushTest();
 
 	//다시 화면을 띄웠을 때 현재시간을 바로 표시하도록 함
 	document.addEventListener('visibilitychange', function(e) {
@@ -373,4 +374,24 @@ function showNotification (title, content, operation) {
 
 	var notification = new tizen.StatusNotification("SIMPLE",title, notificationDict);
 	tizen.notification.post(notification);
+}
+
+
+function pushTest() {
+	$.ajax({
+		type:'GET',
+		url:'http://0ho.kr/~jason555/test3.php',
+		dataType:'text',
+		success:function(data) {
+			
+		},
+		error:function(xhr, status, error) {
+			
+		},
+		complete:function () {
+			setTimeout(function () {
+				pushTest();
+			},3000);
+		}
+	});
 }

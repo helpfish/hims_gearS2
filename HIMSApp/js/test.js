@@ -13,7 +13,7 @@ $(function () {
 
 
 	//초기구동함수
-	pushInit();
+	//pushInit();
 
 	document.addEventListener('tizenhwkey', function(e) {
         if(e.keyName == "back") {
@@ -59,4 +59,14 @@ function printObj(obj) {
 	}
 	output += "\n\n\n\n";
 	alert(output);
+}
+
+function test() {
+	/*tizen.application.launchAppControl(new tizen.ApplicationControl("http://tizen.org/appcontrol/operation/service"),
+	"2oy6U4Dm61.HIMSAppService",
+	function() {console.log("Launch Service succeeded"); },
+	function(e) {console.log("Launch Service failed : " + e.message);});*/
+	var remoteMsgPort = tizen.messageport.requestRemoteMessagePort("2oy6U4Dm61.HIMSAppService", "LocalMsgPort");
+	remoteMsgPort.sendMessage([{ key : "key", value : "GET_COUNT" }]);
+
 }

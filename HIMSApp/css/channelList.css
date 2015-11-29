@@ -6,7 +6,7 @@ body {overflow:hidden;}
 #channelList {display:none;}
 #channelList.show {display:block;}
 #channelList > .row.existingChannel {line-height:auto;padding:25px 0;}
-#channelList > .row.existingChannel > .title {height:70px;line-height:70px;font-size:20pt;}
+#channelList > .row.existingChannel > .title {height:70px;line-height:70px;padding:0 30px;font-size:20pt;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 #channelList > .row.existingChannel > .desc {display:none;}
 #channelList > .row.existingChannel.current > .title {height:40px;line-height:40px;font-size:25pt;}
 #channelList > .row.existingChannel.current > .desc {height:30px;line-height:30px;font-size:16pt;display:block;}

@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>SOWq3vEWcVKl3zTsLioDBnUFaOXwnVrOXyPytVStHAA=</DigestValue>
+<DigestValue>zBdIz4FaKlaKZHycfASGXv4ALuK0Tv+A9dnD6GOuOIo=</DigestValue>
 </Reference>
 <Reference URI="css%2Fcommon.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -72,7 +72,7 @@
 </Reference>
 <Reference URI="css%2Findex.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>8IS0Ot0rn9HTf9WB5vp1IqIOVnh87kGXFL5MzCMi5UQ=</DigestValue>
+<DigestValue>t68LaysETl18y0XAx2fiNa4KonskkK6gkxZVM/kS/dE=</DigestValue>
 </Reference>
 <Reference URI="icon.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -80,19 +80,19 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>nyZa1Dbw4hvfiUS9GUaKaHCrwp0ecy2FUgzOynDHY6k=</DigestValue>
+<DigestValue>Smt3aRXifLdPYJ6yuDZ1V0zZwuaBT/bDooEpdRXE/eA=</DigestValue>
 </Reference>
 <Reference URI="js%2Fcommon.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>KHEfZP/1zabJd+Hu6rzWjrgVf41zWgpv15iWmDRAyPw=</DigestValue>
+<DigestValue>A+Co6TMi3sxXsHDzpUQ6V9FnsnfSrkL06DXMxZYuc3g=</DigestValue>
 </Reference>
 <Reference URI="js%2Findex.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>sfjXnFbgv0qVfAl/sjT63NTbm1Rj7ZYRCLxJfqvbz8g=</DigestValue>
+<DigestValue>M+cAn3CAr8S3nWv59BQxlfuJf2h2hpH+uD048qLqGvw=</DigestValue>
 </Reference>
 <Reference URI="lib%2Fjquery%2Fjquery-2.1.4.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw=</DigestValue>
+<DigestValue>3ks8PR3CUGtmk/D5iITh3AdM2p1myrObe0ihFf38TA8=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -103,11 +103,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-TQKVJW9INT52Y6nM3ehWhhkTswVLo2y0NX4eLuc1YvXvlWn3rtkKsJFhyXrG9gWhWekXNrgYc3u+
-iPv505SqlMx7q8vQhBykRIOmQUhIJCkMDJMexwyCLZxgrH9JYeJbA0MVBIMtpsIk9aXllaHqQ84n
-3hjntw9SNbnkQsDGQrP++GigMvT86iie4Mvbeq1iaYFBHv71/gqgvu2mxcFKVX145XvbNU1yVKrC
-0D8Hfl0uVsSmXp6GbHfGUCOtJLALtgeT3LR6Z/xQOz2r+6XoAJpiIJ8YwycZbvZF/uJG0tX3am74
-KaPIEJhK/XXYM0V0aVDWtyYqim7dxFspV0wwgw==
+R5G38M10eg0xW4lkBKB6I3z7QPe4qyaCzjdbcGinPfEZZ+aD5kKCv6Gf2skvhMUhADvKSkCNq6ZU
+iu3dN4tdsMcSniOAJTaavnaRu9AKZ3wx7irG1TXyMyhjASURJyLWCsnpHpIaREQBBwhR7oLo1UaI
+KrEiaAm/oSodcPEwHfC4o63qu5rUu/WN2m16CKNMBnJ18ILAz+wsJeoffjyR/V/UweDlAiNSb2gw
+V2D8XQKA6J3VZFZ9iu8e8wSSDxZOnyPe+fbpxhdeEpkkyd2EQXrICSnLz6cuySg3cfF8lfwgtJqi
+kzyr65xguheuoyrfdpx7KXFHKW6ul6ON1MEEsQ==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

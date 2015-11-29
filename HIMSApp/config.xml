@@ -28,6 +28,7 @@
     <tizen:application id="2oy6U4Dm61.HIMSApp" package="2oy6U4Dm61" required_version="2.3"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://tizen.org/feature/web.service"/>
     <icon src="icon.png"/>
     <name>HIMSApp</name>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
@@ -36,5 +37,11 @@
     <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
     <tizen:profile name="wearable"/>
+    <tizen:service id="2oy6U4Dm61.HIMSAppService" on-boot="true" auto-restart="true">
+        <tizen:content src="service/polling.js"/>
+        <tizen:name>PollingSvc</tizen:name>
+        <tizen:icon src="icon.png"/>
+        <tizen:description>Polling Service</tizen:description>
+    </tizen:service>
     <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
 </widget>

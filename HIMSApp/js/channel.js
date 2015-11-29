@@ -136,7 +136,7 @@ function menuClose () {
 function historyOpen() {
 	HIMSApiCall({
 		type:'GET',
-		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10&format=mp3',
+		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10',
 		success:function(data) {
 			//alert(JSON.stringify(data));
 			if (data['error'] != null) {
@@ -178,8 +178,7 @@ function historyOpen() {
 
 					$this.addClass('play');
 					var audioData = base64ToArrayBuffer($channelHistory.find('.row:eq('+idx+')').attr('msg'));
-					soundSource = audioCtx.createBufferSource();
-					volumeNode = audioCtx.createGainNode();
+					
 					
 					try {
 						var soundBuffer = audioCtx.createBuffer(audioData, true);
@@ -188,14 +187,8 @@ function historyOpen() {
 						return;
 					}
 					soundSource.buffer = soundBuffer;
-					
 
-					// 노드 연결
-					soundSource.connect(volumeNode);
-					volumeNode.connect(audioCtx.destination);
 
-					// 기본 셋팅
-					volumeNode.gain.value = 8;
 					//soundSource.loop = true;
 					soundSource.onended = function () {
 						//soundSource.noteOff(0);
@@ -256,6 +249,15 @@ Recoder 관련 함수들
 */
 function recorderInit() {
 	audioCtx = new webkitAudioContext();
+	soundSource = audioCtx.createBufferSource();
+	volumeNode = audioCtx.createGainNode();
+
+	// 노드 연결
+	soundSource.connect(volumeNode);
+	volumeNode.connect(audioCtx.destination);
+
+	// 기본 셋팅
+	volumeNode.gain.value = 8;
 
 	navigator.webkitGetUserMedia({video:false,audio:true},function (e) {
 		navigator.tizCamera.createCameraControl(e,function (ctrl) {

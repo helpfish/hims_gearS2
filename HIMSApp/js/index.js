@@ -15,8 +15,8 @@ $(function () {
 		type:'alert',
 		verticalAlign:'middle',
 		onclickA:function () {
-			tizen.application.getCurrentApplication().exit();
-			//location.href='test.html';
+			//tizen.application.getCurrentApplication().exit();
+			location.href='test.html';
 		}
 	});
 
