@@ -262,6 +262,7 @@ function pushPolling() {
 			"Content-Type":"application/json",
 			"Authorization":"Basic "+loginInfo['token']
 		},
+		timeout:10000,
 		success:function(data) {
 			console.log(data);
 			if (data['result'] != null && data['result'].length > 0) {
@@ -274,20 +275,18 @@ function pushPolling() {
 				walkieLast = d.getFullYear()+'-'+zerofill(d.getMonth()+1,2)+'-'+zerofill(d.getDate(),2)+' '+zerofill(d.getHours(),2)+':'+zerofill(d.getMinutes(),2)+':'+zerofill(d.getSeconds(),2);
 				console.log(walkieLast);
 			}
-
-			setTimeout(function () {
-				pushPolling2();
-			},pushInt);
 			
 		},
 		error:function(xhr, status, error) {
 			console.log(status);
 			//alert(xhr.responseText);
 			//alert(error);
+			
+		},
+		complete:function () {
 			setTimeout(function () {
 				pushPolling2();
 			},pushInt);
-			
 		}
 	});
 }
@@ -314,6 +313,7 @@ function pushPolling2() {
 			"Content-Type":"application/json",
 			"Authorization":"Basic "+loginInfo['token']
 		},
+		timeout:10000,
 		success:function(data) {
 			console.log(data);
 			var newFlag = false;
@@ -348,18 +348,16 @@ function pushPolling2() {
 				}
 			}
 
-
-			setTimeout(function () {
-				pushPolling();
-			},pushInt);
 		},
 		error:function(xhr, status, error) {
 			console.log(status);
 			//alert(xhr.responseText);
+			
+		},
+		complete:function () {
 			setTimeout(function () {
 				pushPolling();
 			},pushInt);
-			
 		}
 	});
 }

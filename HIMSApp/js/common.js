@@ -1,7 +1,7 @@
 /**
 * 페이지 공통 변수
 **/
-var HIMS = {}, $_GET = {};
+var HIMS = {}, $_GET = {}, HIMSApiCallType = 0;		//HIMSApiCallType, 0은 기본 behavior, 1은 실패시 아무것도 안함
 HIMS['apiUrl'] = 'http://52.8.181.110';
 
 /**
@@ -29,6 +29,8 @@ function HIMS_init() {
 		HIMS['loginInfo']['position'] = 'manager';
 		HIMS['loginInfo']['id'] = 'admin';
 	}
+
+	
 }
 
 /**
@@ -209,14 +211,20 @@ function HIMSApiCall(option) {
 				}
 			}
 
-			if (history.length == 1) {
+			//아무것도 안함
+			if (HIMSApiCallType == 1) {
+
+			} else if (history.length == 1) {
 				tizen.application.getCurrentApplication().exit();
 			} else {
-				//history.back();
-				hideLoadingPopup();
+				history.back();
 			}
-			//alert(xhr.responseText);
+
+			hideLoadingPopup();
 			
+		},
+		complete:function () {
+			HIMSApiCallType = 0;
 		}
 	}, option);
 

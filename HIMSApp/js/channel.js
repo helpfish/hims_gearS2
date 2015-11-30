@@ -134,6 +134,7 @@ function menuClose () {
 }
 
 function historyOpen() {
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10',
@@ -218,6 +219,7 @@ function historyClose() {
 }
 
 function userListOpen() {
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id'],
@@ -334,7 +336,7 @@ function recordFileSubmit() {
 							fr.onload = function (e) {
 								var postData = {};
 								postData.msg = e.target.result.substr(22);
-
+								HIMSApiCallType = 1;
 								HIMSApiCall({
 									type:'POST',
 									url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg',

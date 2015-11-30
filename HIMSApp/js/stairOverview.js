@@ -37,7 +37,6 @@ $(function () {
 * 함수선언
 **/
 function getStairInfo () {
-//필요한 것만
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms',

@@ -110,9 +110,8 @@ function getUserList () {
 	menuClose();
 	menuBtnHide();
 	selectedUserList = [HIMS['loginInfo']['id']];
-	showLoadingPopup();
 
-
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/users',
@@ -190,6 +189,7 @@ function createChannel () {
 	postData.channel_name = $titleWrite.find('input[name=channelName]').val();
 	postData.member_list = selectedUserList;
 
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/walkie/channel',
@@ -228,11 +228,11 @@ function menuBtnHide() {
 }
 
 function historyOpen() {
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/walkie/msg?last_received=0&from=latest&num=10&format=mp3&encoding=multipart',
 		success:function(data) {
-			console.log(data);
 			if (data['error'] != null) {
 				alert(data['error']);
 				hideLoadingPopup();

@@ -18,7 +18,6 @@ $(function () {
 	$commentWrite = $('#commentWrite');
 
 	//평가항목을 받아옴
-	showLoadingPopup();
 	getEvaluationData();
 
 	//yhDialog 적용
@@ -135,6 +134,7 @@ function evalSubmit() {
 		postData.inspection_form_dict[evalData[i]['id']].comment = cmtList[i];
 	}
 
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/evaluation',

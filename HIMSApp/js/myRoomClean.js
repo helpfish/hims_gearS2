@@ -106,6 +106,7 @@ function doClean(roomState) {
 	postData.room_num = $_GET['roomNum'];
 	postData.state = roomState;
 
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/clean',

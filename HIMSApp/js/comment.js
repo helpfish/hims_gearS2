@@ -75,6 +75,7 @@ function commentWriteSubmit(cmtContent) {
 	var postData = {};
 	postData.requirement = cmtContent;
 
+	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'POST',
 		url:HIMS['apiUrl']+'/api/requirements/'+$_GET['roomNum'],

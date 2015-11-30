@@ -15,7 +15,6 @@ $(function () {
 	$roomList = $('#roomList');
 
 	//정보 받아오기
-	showLoadingPopup();
 	getMyRoomInfo();
 
 	document.addEventListener('tizenhwkey', function(e) {
@@ -35,7 +34,6 @@ $(function () {
 * 함수선언
 **/
 function getMyRoomInfo () {
-//필요한 것만
 	HIMSApiCall({
 		type:'GET',
 		url:HIMS['apiUrl']+'/api/rooms?cleaner_id='+HIMS['loginInfo']['id'],
