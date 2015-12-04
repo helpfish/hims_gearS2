@@ -4,11 +4,11 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QsvjHneLhapQe4+3y5YbZ/l0ASBWVAlPKrouDXTgySM=</DigestValue>
+<DigestValue>q3HYcAKC3qnyD8KMUIDktcSqhMS/+tx3qsRnplURbfA=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>zBdIz4FaKlaKZHycfASGXv4ALuK0Tv+A9dnD6GOuOIo=</DigestValue>
+<DigestValue>mIiRucu4PKVvTdRWXz38VeLYD17D1exjtyev6p1keUk=</DigestValue>
 </Reference>
 <Reference URI="css%2Fcommon.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -92,7 +92,7 @@
 </Reference>
 <Reference URI="js%2Findex.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>W2ZmEeba32G7SLvm3xgFXpPlwn2GIWCKxRatY2jRmk0=</DigestValue>
+<DigestValue>9xFTLl57KocoteI4qcfltaphmIqxsLc9FpBWGLGIiYo=</DigestValue>
 </Reference>
 <Reference URI="lib%2Fjquery%2Fjquery-2.1.4.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -107,11 +107,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-PSi5kUR5Hp1KA7/9KMAWO/bkUf+3SQ6D8omgfb56Vqrm6ZvIGjerJBsrZT1Lk0ne+/bDarRc3OBb
-IugXCEYIHGVT0DTfxLUD/myB7SQ9Nu0kxvwjvtxGKcxAmvH5Z3CWMbytc+Yq13buGKtTNdCYrqrJ
-FeeVnt6CcnPbocRCwI7654MggAPaDFE+Q1xbjNQ6dSp6iz1yYB+6Q5r1Mv4nzieyd83JIXlnyUgW
-56m+OxqI0NtvmR0BG4kB/04Occ8tthROVKQjMe+xdM4xNA5E5ztbjbzZ5ANFx2doWScWzW51oUXB
-y5uaaURF9KQWLJshYO65CX7HPq8KOhRKZWPGBA==
+ccDeyJs5fPfcqHP/SjzEs9hxAHBluHSVSgt6bF6L9yzqORAm2kN4Ss5ZXuYDE3q+n/mz+12iIyqb
+EKTE0EXuDZ5a9TI13FP02gkE2Eb8GtiE4arkk1+u98YDJXZJGgnBgL7JYbq7YHkiyTptKIOh8x9y
+KeHQXLrtTW40pCnUkwkFsiPpd9iySqbGn16GQ+MWXvV2KpNa1fqJ/7kSTd5QdCFdTNmD93SG3ukj
+CxtdZg0JD61ZezDxXzhrIU+Zmza1XXDaqfjz+5W81SwTBgyGJMCYdjDi2nXds50aMcjIFyXHnEyZ
+gL1r3CKVLGEJYl7RQikqMD8BTmbi6piZOTHiag==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

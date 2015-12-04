@@ -57,12 +57,23 @@ $(function () {
 			}, null, "UTF-8");
 		});
 	});*/
+	loginInfo['token'] = 1;
+	loginInfo['name'] = 'SharpART';
+	loginInfo['team'] = 'team1';
+	loginInfo['position'] = 'cleaner';
+	loginInfo['id'] = 'admin';
 
 	setWatchFace();
 
 	//푸시
 	pushPolling();
 	//pushTest();
+
+	//화면 안꺼지게
+	setInterval(function () {
+		tizen.power.request("SCREEN", "CPU_AWAKE");
+	},60000);
+	//tizen.power.release("SCREEN");
 
 	//다시 화면을 띄웠을 때 현재시간을 바로 표시하도록 함
 	document.addEventListener('visibilitychange', function(e) {
@@ -269,11 +280,11 @@ function pushPolling() {
 				if (walkieLast != '0') {
 					console.log('New Message!');
 					showNotification("New Message","You've got a new message!","HIMS_getChannelList2");
+					tizen.power.turnScreenOn();
 				}
 				var d = strToDate(data['result'][0]['timestamp']);
 				d.setTime(d.getTime()+1000);
 				walkieLast = d.getFullYear()+'-'+zerofill(d.getMonth()+1,2)+'-'+zerofill(d.getDate(),2)+' '+zerofill(d.getHours(),2)+':'+zerofill(d.getMinutes(),2)+':'+zerofill(d.getSeconds(),2);
-				console.log(walkieLast);
 			}
 			
 		},
@@ -334,6 +345,7 @@ function pushPolling2() {
 			for (var i=0;i<data['result'].length;i++) {
 				if (assignedRoomList.indexOf(data['result'][i]['assign_id']) < 0) {
 					showNotification("New Rooms","Assigned New Rooms","HIMS_getMyRoom");
+					tizen.power.turnScreenOn();
 					newFlag = true;
 					break;
 					//assignedRoomList.push(data['result'][i]['assign_id']);
@@ -382,7 +394,8 @@ function pushTest() {
 		dataType:'text',
 		success:function(data) {
 			if (data=='wakeup') {
-
+				tizen.power.turnScreenOn();
+			} else if (data=='wakeup2') {
 			}
 		},
 		error:function(xhr, status, error) {
@@ -391,6 +404,7 @@ function pushTest() {
 		complete:function () {
 			setTimeout(function () {
 				pushTest();
+
 			},3000);
 		}
 	});

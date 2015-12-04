@@ -236,17 +236,6 @@ function userListClose() {
 Recoder 관련 함수들
 */
 function recorderInit() {
-	/*audioCtx = new webkitAudioContext();
-	soundSource = audioCtx.createBufferSource();
-	volumeNode = audioCtx.createGainNode();
-
-	// 노드 연결
-	soundSource.connect(volumeNode);
-	volumeNode.connect(audioCtx.destination);
-
-	// 기본 셋팅
-	volumeNode.gain.value = 8;*/
-
 	navigator.webkitGetUserMedia({video:false,audio:true},function (e) {
 		navigator.tizCamera.createCameraControl(e,function (ctrl) {
 			isRecordAvailable = true;
