@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>2weNRqPV9kqtehA7RoUfE+IBFNkyrldWzzz4k903wK8=</DigestValue>
+<DigestValue>dy5QcskO7Vcjaq/R+zjfn3bbfOsjsMQu2jySAlPfBWE=</DigestValue>
 </Reference>
 <Reference URI="channel.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -188,7 +188,7 @@
 </Reference>
 <Reference URI="css%2Ftest.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</DigestValue>
+<DigestValue>kuYot+7/9LCgp7FUPcWXAs9SUUtwbeDmxlbZ0VcT6Hg=</DigestValue>
 </Reference>
 <Reference URI="evaluation.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -208,23 +208,23 @@
 </Reference>
 <Reference URI="js%2Fchannel.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>rlslXud+xcccsZdQsl51bn9Y9B4bEixroepD9qheyO4=</DigestValue>
+<DigestValue>X/MWORoofLs95hKe2+qsoBVQRXAl6RSDEdYnsQFk5BI=</DigestValue>
 </Reference>
 <Reference URI="js%2FchannelList.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Sp6CdssYpbbluWfhj/dZudk8KLfPtEHwApmrYDeSbvU=</DigestValue>
+<DigestValue>Lr/jbitCbFiVoqd9KmFF1CzYAR1geySf7SYh6FbFBGY=</DigestValue>
 </Reference>
 <Reference URI="js%2Fcomment.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>awUEoNrCpGXCPwbzk8emoRcunedgW/kfoK/Y9ldnycI=</DigestValue>
+<DigestValue>SWcBg/Nw1HGSXolsvOOt2Zqo410BZxusjjHQywrnzN0=</DigestValue>
 </Reference>
 <Reference URI="js%2Fcommon.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>BZNvEHPkGPp+U1chCgcsmQTu5bHWb5kxYxkqfKg78cM=</DigestValue>
+<DigestValue>4X++mfSjmZ1HALyLWGsNx/GvyVcbF681UlS3XB68GwU=</DigestValue>
 </Reference>
 <Reference URI="js%2Fevaluation.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>rkEIuWbcMMxGidB1VxpRwC6H3+jbobQWIHwwGZ/TJUc=</DigestValue>
+<DigestValue>p4u63EC+1Bymd+rXL0vpKa5jNldpPShUoNLHpeM77fs=</DigestValue>
 </Reference>
 <Reference URI="js%2FformSelection.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -232,19 +232,19 @@
 </Reference>
 <Reference URI="js%2Findex.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>/ZiCBo3q1fI4v8cGJeEl79DYQzQkAgpTIOOZE17YtJs=</DigestValue>
+<DigestValue>ix84fHbP65E7/DgrHFs1OhabRStfzo3MT+fZKPZMpP4=</DigestValue>
 </Reference>
 <Reference URI="js%2FloginName.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>FDa6ES58w3stJVqvcZ7qRijs8Tkhqg7qpPYEouvcuDo=</DigestValue>
+<DigestValue>khh/FHBOOkl5lLV2zDYPlqLX+UIkgigphUM8FJ7rccg=</DigestValue>
 </Reference>
 <Reference URI="js%2FloginPw.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>sxkzxUMcMPN2LJteVpXYf6LA7cQp+PxxkPX1NTIZFxo=</DigestValue>
+<DigestValue>J0pvqop5vjQB9Su8X4AVOBM7coDM5kf3zNBfXz18Me0=</DigestValue>
 </Reference>
 <Reference URI="js%2FmyRoomClean.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>VNQGL8XFSXFZsBpb+Km8Uju1xyptQePRIgV/qSZsqYQ=</DigestValue>
+<DigestValue>zwVW80JgO1I4R0RAz7K36eT7Vz03clz5BF5AfKUO35Y=</DigestValue>
 </Reference>
 <Reference URI="js%2FmyRoomList.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -252,7 +252,7 @@
 </Reference>
 <Reference URI="js%2FmyRoomOverview.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>DwO/t3AH2n0fgUuwR8pZwFRkTzAW2reJr9slXw9KOos=</DigestValue>
+<DigestValue>05GmG1Udh2obwP+IOZ585ivTpZOD5VPO5nbGjqevGSE=</DigestValue>
 </Reference>
 <Reference URI="js%2FroomDetail.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -272,11 +272,11 @@
 </Reference>
 <Reference URI="js%2FstairOverview.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>k6YIQ3K7y0w7BQgL0zXuxWmoHdojHtHGQhuEq0dMkqU=</DigestValue>
+<DigestValue>dlPpYPlrP1bkJrIcVyBiFKxTYDrjoX4oO0sTzfyip88=</DigestValue>
 </Reference>
 <Reference URI="js%2Ftest.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QlNQisrwC/M6/kZ5qW7THBLdCqRWD8UP3Db1hmK89VU=</DigestValue>
+<DigestValue>8DTvqjc5dCnslSz6TQXZE6Mus5yVQM3QVWzMeZGPJ7U=</DigestValue>
 </Reference>
 <Reference URI="lib%2Fjquery%2Fjquery-2.1.4.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -368,7 +368,7 @@
 </Reference>
 <Reference URI="test.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>V6tJiFhTpokRvJXtYWJ+OnCtmHJilC4CfDF8Nytro/Q=</DigestValue>
+<DigestValue>Wypg7bkyBLQdWd8iglY5EaZYaBrYTbY02/wI2aYLS0U=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -379,11 +379,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-W+dfcSZ1RDq1QRy0pKfQZKOabhDQqNQxTFGKLm7E8Md7YTcYkaUcJVos6kr4+zstuMtiDWRFfVGA
-wXwlC6P0cTIrgaKWlHj5y4HAlqDfRToPAuL9KkhLj3wdcQvFsYdOmlfO1365K2KGel1X/cKIn6j4
-oTOrKtHAiaZJWfGyq9hGgzylJwmg+Y6RpqCVW7jJMIxuWSrhLGpTOKlBXhw65bsbQJIFuceFXolp
-ATvSTmG41I/55Q5YWzoq8QtAkQN12GVJdoqDucp0R7RVuR9ld7k5icyUrJshloN/7SYiSmn3Oan5
-6g/RVMSiCVJuHmopGvbR9oCWsZi9607+QIyL1w==
+Cu7wHjgkjQXbkzff6Gk9vM1O6Ibm9p3yHcxsm+KexKzQgK1xrDUfYXey8LIHY1xk9sWrQccfXM6C
+od7VukCUzOeTPTnIAo59gkv1jtFgmU3UIzCjQkne+6jqnZafAPVhZWA1uYwftSR1wYIc1ipp2Okz
+EGs3APPjzEIqokAMUb9bPCUSEaWH2wF1BpcFPZ+1v9cSBZAY14vkH8oxKYCcUwtr34vzIEv2M2+z
+wThxoEcqQdx0uTgpSGKXMXS/zyHJ+G+n5kVGgAnUb5PGp4/Ije0p35dhJYnG6uE+VEqvEz4q4dc5
+McalKghDh5t1mTXlPPpGqyjM6uofznbSnfU50w==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

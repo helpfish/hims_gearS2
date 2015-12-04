@@ -38,6 +38,7 @@ function getNameList() {
 			"Content-Type":"application/json"
 		},
 		success:function (data) {
+			console.log(data);
 			html = '';
 			for (var i=0;i<data['result'].length;i++) {
 				html += "<div class='row' mbId='"+escapeHtml(data['result'][i]['id'])+"'>"+escapeHtml(data['result'][i]['name'])+"</div>";

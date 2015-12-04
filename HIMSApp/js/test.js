@@ -13,8 +13,6 @@ $(function () {
 
 
 	//초기구동함수
-	//pushInit();
-
 	document.addEventListener('tizenhwkey', function(e) {
         if(e.keyName == "back") {
 			tizen.application.getCurrentApplication().exit();
@@ -33,40 +31,8 @@ $(function () {
 /**
 * 함수선언
 **/
-function pushInit() {
-	pushService = new tizen.ApplicationControl("http://tizen.org/appcontrol/operation/push_test");
-	//printObj(pushService);
-	printObj(tizen);
-
-
-	/*try {
-		tizen.push.registerService(pushService, function (id) {
-			alert(id);	
-		}, function (e) {
-			alert(e);	
-		});
-		alert('try!');
-	} catch (e) {
-		alert('fail!');
-		alert(e);
-	}*/
-}
-
-function printObj(obj) {
-	var output = "\n\n\n\n";
-	for(var x in obj) {
-		output += x+" : "+[obj[x]]+"\n";
-	}
-	output += "\n\n\n\n";
-	alert(output);
-}
-
-function test() {
-	/*tizen.application.launchAppControl(new tizen.ApplicationControl("http://tizen.org/appcontrol/operation/service"),
-	"2oy6U4Dm61.HIMSAppService",
-	function() {console.log("Launch Service succeeded"); },
-	function(e) {console.log("Launch Service failed : " + e.message);});*/
-	var remoteMsgPort = tizen.messageport.requestRemoteMessagePort("2oy6U4Dm61.HIMSAppService", "LocalMsgPort");
-	remoteMsgPort.sendMessage([{ key : "key", value : "GET_COUNT" }]);
-
+function test (src) {
+	var a = new Audio();
+	a.src = src;
+	a.play();
 }

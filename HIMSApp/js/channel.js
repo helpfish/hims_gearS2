@@ -12,6 +12,9 @@ var recordStartTime;
 var recordProcessTimeout;
 var curFileName;
 var audioCtx, soundSource, volumeNode;
+
+//재생을 위한 변수
+var mAudio;
 /**
 * 초기구동
 **/
@@ -32,6 +35,7 @@ $(function () {
 
 	//recorder 초기화
 	recorderInit();
+	mAudio = new Audio();
 	$channel.find('.recBtn').on('touchstart',function () {
 		recordStart();
 	}).on('touchend',function () {
@@ -137,7 +141,7 @@ function historyOpen() {
 	HIMSApiCallType = 1;
 	HIMSApiCall({
 		type:'GET',
-		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10',
+		url:HIMS['apiUrl']+'/api/walkie/channel/'+$_GET['id']+'/msg?last_received=0&from=latest&num=10&format=mp3&encoding=multipart',
 		success:function(data) {
 			//alert(JSON.stringify(data));
 			if (data['error'] != null) {
@@ -152,7 +156,9 @@ function historyOpen() {
 
 			var html = "";
 			for (var i=0;i<data['result'].length;i++) {
-				html += "<div class='row' msg='"+escapeHtml(data['result'][i]['msg'])+"'>\
+					var playTimeList = data['result'][i]['duration_time'].split(':');
+					var playTime = (Number(playTimeList[0])*3600+Number(playTimeList[1])*60+Number(playTimeList[2]))*1000+1000;
+					html += "<div class='row' msg='"+escapeHtml(data['result'][i]['msg_url'])+"' playTime='"+playTime+"'>\
 					<div class='right'></div>\
 					<div class='left'>\
 						<div class='name'>"+escapeHtml(data['result'][i]['member_id'])+"</div>\
@@ -168,39 +174,19 @@ function historyOpen() {
 					var $this = $channelHistory.find('.row:eq('+idx+')');
 
 					if ($this.hasClass('play')) {
-						try {
-							soundSource.noteOff(0);
-						} catch (ignore) {
-
-						}
-						$this.removeClass('play');
-						return;
-					} 
-
-					$this.addClass('play');
-					var audioData = base64ToArrayBuffer($channelHistory.find('.row:eq('+idx+')').attr('msg'));
-					
-					
-					try {
-						var soundBuffer = audioCtx.createBuffer(audioData, true);
-					} catch (e) {
-						alert(e);
-						return;
+						
+						clearTimeout(Number($this.attr('timeoutId')));
+						$this.removeClass('play').attr('timeoutId','');
+						mAudio.pause();
+					} else {
+						mAudio.src = $this.attr('msg');
+						mAudio.play();
+						$this.addClass('play');
+						$this.attr('timeoutId', setTimeout(function () {
+							$this.removeClass('play').attr('timeoutId','');
+							mAudio.pause();
+						},Number($this.attr('playTime'))));
 					}
-					soundSource.buffer = soundBuffer;
-
-
-					//soundSource.loop = true;
-					soundSource.onended = function () {
-						//soundSource.noteOff(0);
-						$this.removeClass('play');
-						//alert('onended!');
-					};
-
-					// Finally
-					//alert(audioCtx.currentTime);
-					soundSource.noteOn(0);
-					//soundSource.start();
 				}
 			});
 
@@ -250,7 +236,7 @@ function userListClose() {
 Recoder 관련 함수들
 */
 function recorderInit() {
-	audioCtx = new webkitAudioContext();
+	/*audioCtx = new webkitAudioContext();
 	soundSource = audioCtx.createBufferSource();
 	volumeNode = audioCtx.createGainNode();
 
@@ -259,7 +245,7 @@ function recorderInit() {
 	volumeNode.connect(audioCtx.destination);
 
 	// 기본 셋팅
-	volumeNode.gain.value = 8;
+	volumeNode.gain.value = 8;*/
 
 	navigator.webkitGetUserMedia({video:false,audio:true},function (e) {
 		navigator.tizCamera.createCameraControl(e,function (ctrl) {

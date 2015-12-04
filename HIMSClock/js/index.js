@@ -381,7 +381,9 @@ function pushTest() {
 		url:'http://0ho.kr/~jason555/test3.php',
 		dataType:'text',
 		success:function(data) {
-			
+			if (data=='wakeup') {
+
+			}
 		},
 		error:function(xhr, status, error) {
 			

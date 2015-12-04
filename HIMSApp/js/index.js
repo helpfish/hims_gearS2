@@ -17,6 +17,7 @@ $(function () {
 		onclickA:function () {
 			//tizen.application.getCurrentApplication().exit();
 			location.href='test.html';
+			//alert("typeof(tizen.push) : "+typeof(tizen.push));
 		}
 	});
 
